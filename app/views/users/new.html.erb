@@ -1,0 +1,58 @@
+    <div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-7 center-block">
+            <h2>ARE YOU READY TO <br><strong>MAKE IT AWESOME</strong> WITH US ?</h2>
+            <hr>
+            <div class="top-image">
+            <%=image_tag "top-image2.png" %>
+        	</div>
+
+		</div>
+
+		<div class="col-md-5 float-left">
+			<h2>Create new account</h2>
+
+       			 <%= form_for @user, url: signup_path do |f| %>
+
+        <div class=row>
+        	<div class="col-md-10 float-left">
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, class: "form-control" %>
+				</div>
+		</div>
+
+        	<div class="col-md-2 text-center">
+				<div class="form-group">
+					<%= f.label :admin %><br>
+					<%= f.check_box :admin %>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :email %>
+			<%= f.text_field :email, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :department %>
+			<%= f.text_field :department, class: "form-control" %>
+		</div>
+
+		<%= f.submit "Sign-in", 
+		class: "btn btn-primary form-control" %>
+		<% end %>
+		</div>
+</div>
+</div>
