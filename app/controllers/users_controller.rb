@@ -5,14 +5,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(
-			name: params[:user][:name],
-			email: params[:user][:email],
-			password: params[:user][:password],
-			password_confirmation: params[:user][:password_confirmation],
-			department: params[:user][:department],
-			admin: params[:user][:admin]
-			)
+		@user = User.new(user_params)
 
 		if @user.save
 			redirect_to root_url
@@ -20,4 +13,11 @@ class UsersController < ApplicationController
 			render "new"
 		end
 	end
+
+	private
+
+  	def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :department, :admin)
+ 	end
+
 end
