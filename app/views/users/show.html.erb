@@ -1,0 +1,60 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-4 center-block">
+			<div class="row">
+				<div class="col-md-10 center-block">
+            		<h2><strong>Profile</strong></h2>
+            	</div>
+            	<div class="col-md-2 center-block">
+            		<%= button_to "Edit", "#",
+					class: "btn btn-info" %>
+				</div>
+			</div>
+            <hr>
+            	<%=image_tag "top-image2.jpg" %>
+            	<h3><%= @user.name %></h3>
+				<p><%= @user.email %></p>
+				<p><%= @user.biography %></p>
+				<p>@<%= @user.department %></p>
+				<hr>
+			<div class="row">
+				<div class="col-md-6 center-block">
+				<h5><%= @user.followers.count %> followers</h5>
+				</div>
+				<div class="col-md-6 center-block">
+				<h5><%= @user.followed.count %> following</h5>
+				</div>
+			</div>
+				<hr>
+				<% if  current_user != @user %>
+					<% if relationship = current_user.relationship(@user) %>
+					<%= button_to "Unfollow", relationship_path(relationship), method: :delete,
+							class: "btn btn-default btn-block" %>
+					<% else %>
+					<%= button_to "Follow", relationships_path, 
+							params: {followed_id: @user.id}, 
+							class: "btn btn-success btn-block" %>
+					<% end %>
+				<% end %>
+        	</div>
+        <div class="col-md-1"></div>
+		<div class="col-md-7">
+			<div class="container balloon1-left">
+				<h3><i class="fa fa-book"></i><strong><%=@user.name%>'s Activity</strong></h3>
+				<hr>
+				<div class="row">
+					<div class="col-md-2">
+						<div class="img">
+						<%=image_tag "top-image2.jpg", class: "mw-100" %>
+						</div>
+					</div>
+					<div class="col-md-10">
+						<p class="activity-text">You learned 10/20 words in Category#</p>
+						<small class="text-muted">Posted # ago</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
