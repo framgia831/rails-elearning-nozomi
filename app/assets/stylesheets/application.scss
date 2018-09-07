@@ -55,3 +55,58 @@
     .top-image {
     margin-top: 80px;
     }
+
+
+.balloon1-left {
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0 1.5em 15px;
+    padding: 7px 10px;
+    height:100%;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    border-radius: 15px;
+}
+
+.balloon1-left:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
+}
+
+.balloon1-left p {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    height: 1px;
+    background: #bbb;
+    background-image: -webkit-linear-gradient(left, #eee, #777, #eee);
+    background-image: -moz-linear-gradient(left, #eee, #777, #eee);
+    background-image: -ms-linear-gradient(left, #eee, #777, #eee);
+    background-image: -o-linear-gradient(left, #eee, #777, #eee);
+}
+
+.fa{
+    font-size:40px;
+    color: #00bcd4;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.activity-text{
+    font-size: 30px;
+}
+
+.text-muted {
+    float:right;
+    padding-right: 10px;
+}

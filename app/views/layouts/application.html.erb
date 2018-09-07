@@ -31,8 +31,8 @@
 
           <div class="col-md-4">
 
-                    <table>
                       <%= form_for :session, url: login_path do |f| %>
+                    <table>
                         <tr>
                             <td>
                               <div class="form-group">
@@ -52,7 +52,7 @@
                                 <%= f.submit "Login", class: "btn btn-success" %>
                             </td>
                         </tr>
-                      <% end %>
+
 
                         <tr>
                             <td></td>
@@ -60,6 +60,7 @@
                             <td></td>
                         </tr>
                     </table>
+                                  <% end %>
             </div>
       </div>
     </div>

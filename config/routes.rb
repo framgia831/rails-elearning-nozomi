@@ -7,6 +7,14 @@ Rails.application.routes.draw do
 	post "/login", to: "sessions#create"
 
 
-	resources :users, except: :new
+ 
+	resources :users, except: :new do
+	  member do
+	    get :following, :followers
+	  end
+	end
+
+	resources :relationships, only: [:create, :destroy]
+	resources :relationships, only: [:create, :destroy]
 
 end
