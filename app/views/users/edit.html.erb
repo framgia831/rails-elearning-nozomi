@@ -1,6 +1,7 @@
 <div class="container-fluid main">
 	<div class="row">
-		<div class="col-md-4 center-block">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
             <h2><strong>Profile</strong></h2>
             <hr>
         </div>
@@ -8,11 +9,10 @@
         </div>
     </div>
 
-<%= %>
-
 	<%= form_for @user, url: user_path(@user.id) do |f| %>
 	<div class="row">
-		<div class="col-md-5 center-block">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-4 center-block">
 
 				<%= f.label :name %>
 			    <%= f.text_field :name, class: 'form-control' %>
@@ -33,11 +33,10 @@
 			    <%= f.text_field :department, class: 'form-control' %>
         </div>
 
-		<div class="col-md-1 center-block">
-		</div>
+		<div class="col-md-2 center-block"></div>
 
 
-		<div class="col-md-5 center-block">
+		<div class="col-md-4 center-block">
  				<%= f.label :image %><br>
    				<%= f.file_field :image, id: :user_image %>
    				<p><%= f.check_box :remove_image %>Delete image</p>
@@ -68,12 +67,12 @@
 
 				<div class="update-btn">
 			  		<div class="row">
-						<div class="col-md-4 center-block"></div>			  							
-						<div class="col-md-2 center-block">
+						<div class="col-md-6 center-block"></div>			  							
+						<div class="col-md-3 center-block">
 							<%= f.submit "Update", class: "btn btn-outline-primary btn-lg" %>
 						</div>
 					<% end %>
-						<div class="col-md-2 center-block">
+						<div class="col-md-3 center-block">
 							<%= button_to "Cancel", user_path, method: :get, class: "btn btn-outline-warning btn-lg" %>
 						</div>
 				</div>

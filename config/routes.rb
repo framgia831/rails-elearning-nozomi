@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	delete "/login", to: "sessions#destroy"
 
 	post "/users/:id/edit", to: "users#edit"
+	get "/index", to: "users#index"
 
 
  

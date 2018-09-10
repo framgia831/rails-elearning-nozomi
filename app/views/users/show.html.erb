@@ -1,6 +1,7 @@
 <div class="container-fluid main">
 	<div class="row">
-		<div class="col-md-4 center-block">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
 			<div class="row">
 				<div class="col-md-10 center-block">
             		<h2><strong>Profile</strong></h2>
@@ -21,10 +22,10 @@
 				<p>@<%= @user.department %></p>
 
 			<div class="row">
-				<div class="col-md-4 center-block">
+				<div class="col-md-6 center-block">
 				<h5><%= @user.followers.count %> followers</h5>
 				</div>
-				<div class="col-md-4 center-block">
+				<div class="col-md-6 center-block">
 				<h5><%= @user.followed.count %> following</h5>
 				</div>
 			</div>
@@ -38,9 +39,9 @@
 							class: "btn btn-success btn-block" %>
 					<% end %>
 				<% end %>
+				</div>
 			</div>
-		</div>
-        	</div>
+        </div>
         <div class="col-md-1"></div>
 		<div class="col-md-6">
 			<div class="container balloon1-left">
