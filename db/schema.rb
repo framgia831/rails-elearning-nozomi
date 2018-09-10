@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_020751) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "avater"
+    t.string "image"
     t.text "biography"
     t.string "department"
     t.boolean "admin"

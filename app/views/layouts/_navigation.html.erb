@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand">
+  <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <%= link_to "Users", index_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Lessons</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Dashboad</a>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "Logout", login_path, class: "nav-link", method: :delete %>
+          </li>
+      </ul>
+  </div>
+</nav>

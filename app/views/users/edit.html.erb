@@ -1,0 +1,82 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
+            <h2><strong>Profile</strong></h2>
+            <hr>
+        </div>
+		<div class="col-md-8 center-block">
+        </div>
+    </div>
+
+	<%= form_for @user, url: user_path(@user.id) do |f| %>
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-4 center-block">
+
+				<%= f.label :name %>
+			    <%= f.text_field :name, class: 'form-control' %>
+
+			    <%= f.label :email %>
+			    <%= f.email_field :email, class: 'form-control' %>
+
+			    <%= f.label :password %>
+			    <%= f.password_field :password, class: 'form-control' %>
+
+			    <%= f.label :password_confirmation, "Confirmation" %>
+			    <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+			    <%= f.label :biography %>
+			    <%= f.text_area  :biography, class: 'form-control' %>
+
+				<%= f.label :department %>
+			    <%= f.text_field :department, class: 'form-control' %>
+        </div>
+
+		<div class="col-md-2 center-block"></div>
+
+
+		<div class="col-md-4 center-block">
+ 				<%= f.label :image %><br>
+   				<%= f.file_field :image, id: :user_image %>
+   				<p><%= f.check_box :remove_image %>Delete image</p>
+   				<% if @user.image? %>
+   				<%= image_tag @user.image.url, id: :img_prev %>
+   				<% else %>
+   				<%= image_tag @user.image.url, id: :img_prev%>
+   				<% end %>
+   				<%#= image_tag @user.image.url, id: :img_prev if @user.image? else default_url %>
+
+   				<script type="text/javascript">
+				$(function() {
+				 function readURL(input) {
+				   if (input.files && input.files[0]) {
+				     var reader = new FileReader();
+				     reader.onload = function (e) {
+				       $('#img_prev').attr('src', e.target.result);
+				     }
+				     reader.readAsDataURL(input.files[0]);
+				   }
+				 }
+				 $("#user_image").change(function(){
+				   readURL(this);
+				 });
+				});
+				</script>
+
+
+				<div class="update-btn">
+			  		<div class="row">
+						<div class="col-md-6 center-block"></div>			  							
+						<div class="col-md-3 center-block">
+							<%= f.submit "Update", class: "btn btn-outline-primary btn-lg" %>
+						</div>
+					<% end %>
+						<div class="col-md-3 center-block">
+							<%= button_to "Cancel", user_path, method: :get, class: "btn btn-outline-warning btn-lg" %>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

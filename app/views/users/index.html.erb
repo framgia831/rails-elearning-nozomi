@@ -1,0 +1,32 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
+            <h2><strong>Users</strong></h2>
+            <hr>
+        </div>
+		<div class="col-md-8 center-block">
+        </div>
+    </div>
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-10 center-block">
+    <table class="table table-striped table-responsive">
+	    	<thead>
+	    		<th>Name</th>
+	    		<th>Biography</th>
+				<th>Department</th>
+	    	</thead>
+		<% @users.each do |user| %>
+	    	<tbody>
+	    		<td class="name"><h4><%= image_tag user.image.url, id: :img_prev2%>
+	    			<%= link_to user.name, user_url(user) %></h4></td>
+	    		<td class="biography"><h5><%= user.biography %></h5></td>
+				<td><h5><%= user.department %></h5></td>    		  		
+	    	</tbody>
+	    <% end %>
+	</table>
+	<div class="pagenate"><%= will_paginate %></div>
+</div>
+<div class="col-md-1 center-block"></div>
+</div>
