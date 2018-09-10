@@ -13,7 +13,16 @@
 		<div class="col-md-4 float-left">
 			<h2>Create new account</h2>
 
-       			 <%= form_for @user, url: signup_path do |f| %>
+       		<%= form_for @user, url: signup_path do |f| %>
+            <% if @user.errors.any? %>
+                <div class="alert alert-danger">
+                    <ul class="m-0">
+                        <% @user.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
 
         <div class=row>
         	<div class="col-md-10 float-left">

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	before_action :require_login, except: [:new, :create]
+	before_action :require_login, only: [:edit, :update]
+	before_action :correct_user,   only: [:edit, :update]
 
 	def new
 		@user = User.new
@@ -44,8 +45,14 @@ class UsersController < ApplicationController
 
  	def require_login
 		unless current_user
-			flash[:notice] ="Plase log in."
+			flash[:login] ="Plase log in."
 			redirect_to root_url
 		end
 	end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+    
 end

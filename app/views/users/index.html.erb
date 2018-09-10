@@ -15,21 +15,14 @@
 	    	<thead>
 	    		<th>Name</th>
 	    		<th>Biography</th>
-				<th>Email</th>
 				<th>Department</th>
-				<th>Admin</th>
 	    	</thead>
 		<% @users.each do |user| %>
 	    	<tbody>
-	    		<td class="name"><h4><%= image_tag user.image.url, id: :img_prev2%> <%= link_to user.name, user_url(user) %></h4></td>
+	    		<td class="name"><h4><%= image_tag user.image.url, id: :img_prev2%>
+	    			<%= link_to user.name, user_url(user) %></h4></td>
 	    		<td class="biography"><h5><%= user.biography %></h5></td>
-				<td><h5><%= user.email %></h5></td>
-				<td><h5><%= user.department %></h5></td>
-				<td class="admin">
-					<% if user.admin == true %>
-						<h5><i class="fa fa-key"></i></h5></td>
-						<% else%>
-					<%end%>     		  		
+				<td><h5><%= user.department %></h5></td>    		  		
 	    	</tbody>
 	    <% end %>
 	</table>
