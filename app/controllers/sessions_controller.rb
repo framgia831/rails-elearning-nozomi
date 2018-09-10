@@ -9,10 +9,16 @@ class SessionsController < ApplicationController
 			log_in user
 
 			flash[:success] = "Hurray! Successfully logged in!"
-			redirect_to root_url
+			redirect_to user_path(user.id)
 		else
 			flash.now[:notice] = "Invalid information."
 		  	render "new"
 		end
+	end
+
+	def destroy
+		session.destroy
+		flash[:notice] = "Logged out."
+		redirect_to root_url
 	end
 end

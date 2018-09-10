@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :require_login, except: [:new, :create]
 
 	def new
 		@user = User.new
@@ -15,13 +16,32 @@ class UsersController < ApplicationController
 	end
 
 	def show
-	@user = User.find(params[:id])
+		@user = User.find(params[:id])
+	end
+
+	def edit
+		@user = User.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update(user_params)
+		   redirect_to user_path(@user.id)
+		else
+			render "edit"
+		end
 	end
 
 	private
 
   	def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :department, :admin)
+    	params.require(:user).permit(:name, :email, :password, :password_confirmation, :department, :image, :remove_image, :biography, :admin)
  	end
 
+ 	def require_login
+		unless current_user
+			flash[:notice] ="Plase log in."
+			redirect_to root_url
+		end
+	end
 end
