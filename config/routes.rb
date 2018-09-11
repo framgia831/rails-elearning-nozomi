@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
 	post "/users/:id/edit", to: "users#edit"
 	get "/index", to: "users#index"
-
-
  
 	resources :users, except: :new do
 	  member do
@@ -18,7 +16,12 @@ Rails.application.routes.draw do
 	  end
 	end
 
+	namespace 'admin' do
+	  resources :categories
+	end
+
 	resources :relationships, only: [:create, :destroy]
 	resources :relationships, only: [:create, :destroy]
 
 end
+
