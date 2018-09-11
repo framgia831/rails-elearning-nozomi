@@ -6,6 +6,8 @@ class User < ApplicationRecord
 	validates :email, presence: true,
 					  format: { with: EMAIL_REGEX },
 					  uniqueness: true
+
+	validates :biography, length: { maximum: 200 }
 					  
 	has_secure_password
 

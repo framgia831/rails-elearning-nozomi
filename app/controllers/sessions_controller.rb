@@ -8,8 +8,11 @@ class SessionsController < ApplicationController
  		if  user && user.authenticate(params[:session][:password])
 			log_in user
 
-			flash[:success] = "Hurray! Successfully logged in!"
-			redirect_to user_path(user.id)
+			if user.admin?
+				redirect_to admin_categories_path
+			else
+				redirect_to user_path(user.id)
+			end
 		else
 		  	flash[:login] = "Invalid information."
 		  	redirect_to root_url

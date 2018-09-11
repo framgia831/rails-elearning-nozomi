@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand">
   <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
+        <% if current_user.admin? %>
+          <li class="nav-item">
+              <%= link_to "Admin", admin_categories_path, class: "nav-link" %>
+          </li>
+         <% end %>
           <li class="nav-item">
               <%= link_to "Users", index_path, class: "nav-link" %>
           </li>

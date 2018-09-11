@@ -1,5 +1,7 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
     h1 {
         margin-left: 20px;
@@ -194,4 +196,12 @@
 
     .body {
         height: 650px;
+    }
+
+    .title {
+        width: 400px;
+    }
+
+    .description {
+        width: 600px;
     }

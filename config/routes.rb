@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 	  end
 	end
 
+	namespace 'admin' do
+	  resources :categories
+	end
+
 	resources :relationships, only: [:create, :destroy]
 	resources :relationships, only: [:create, :destroy]
 
