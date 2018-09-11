@@ -37,7 +37,7 @@ User.create(name: "Jane",
 end
 
   20.times do |t|
-  title  = "TEST-#{n+1}"
+  title  = "TEST-#{t+1}"
   description = "This is test category."
   Category.create!(title:  title,
                description: description
