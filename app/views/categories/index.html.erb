@@ -1,0 +1,40 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
+			<div class="row">
+				<div class="col-md-10 center-block">
+            		<h2><strong>Category</strong></h2>
+            	<hr>
+            	</div>
+            	<div class="col-md-2 center-block"></div>
+            </div>
+        </div>
+    </div>
+
+	<div class="row">
+		<div class="col-md-2 center-block"></div>
+			<% @categories.each do |category| %>
+				<div class="col-md-3 center-block">
+					<div id="lesson-box">
+						<h4>Title</h4>
+			   			<h4><strong><%= category.title %></strong></h4><hr>
+			   			<h4 class="mt-5">Description</h4>
+				    	<h5 style="height: 200px;"><%= category.description %></h5>
+				    </div>
+				    <div class="text-center">
+				    	<%= link_to "Let's Start !",  "#", class: "btn btn-outline-primary btn-lg mt-4" %>
+				    	<%= link_to "Review Words",  "#", class: "btn btn-outline-warning btn-lg mt-4 ml-1" %>
+				    </div>
+				</div>
+		    <% end %>
+		</div>
+
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+			<div class="col-md-5 center-block mt-3">
+				<div class="pagenate"><%= will_paginate %></div>
+			</div>
+		</div>
+	</div>
+</div>
