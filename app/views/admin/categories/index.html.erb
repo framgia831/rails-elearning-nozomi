@@ -22,15 +22,21 @@
 	    	</thead>
 		<% @categories.each do |category| %>
 	    	<tbody>
-	    		<td class="description"><h4><%= category.title %></h4></td>
+	    		<td class="description">
+	    			<h4>
+						<%= link_to admin_category_words_path(category_id: category.id)  do%>
+	    				<%= category.title %>
+	    				<% end %>    					
+	    			</h4>
+	    		</td>
 	    		<td class="description"><h5><%= category.description %></h5></td>
 				<td>
 					<h4 class="float-left mr-2">
-						<%= link_to  "#"  do%><i class="fa fa-plus-circle"></i><% end %></h4>
+						<%= link_to  new_admin_category_word_path(category_id: category.id)  do%><i class="fa fa-plus-circle"></i>New Word<% end %></h4>
 					<h4 class="float-left mr-2">
-						<%= link_to  edit_admin_category_path(category)  do%><i class="fa fa-pencil"></i><% end %></h4>
+						<%= link_to  edit_admin_category_path(category)  do%><i class="fa fa-pencil"></i>Edit Category<% end %></h4>
 					<h4 class="float-left mr-2">
-						<%= link_to  admin_category_path(category.id), method: :delete  do%><i class="fa fa-times-circle"></i><% end %></h4>
+						<%= link_to  admin_category_path(category.id), method: :delete  do%><i class="fa fa-times-circle"></i>Del. Category<% end %></h4>
 					<h4 class="float-left mr-2">
 				</td>	
 	    	</tbody>
