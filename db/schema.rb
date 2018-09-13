@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_121928) do
 
   create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
-    t.boolean "judge"
+    t.boolean "judge", default: false
     t.bigint "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
