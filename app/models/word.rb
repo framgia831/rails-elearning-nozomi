@@ -9,24 +9,14 @@ class Word < ApplicationRecord
 					  length: { maximum: 20 }
 
 
-   	validate :one_correct
+   validate :one_correct
 
-   	private
-
-   	# def one_correct
-
-   	# 	if :judge == true
-   	# 	error.add(:choices, "Shoud have one correct answer")  
-   	# 	end		
-   	# end
-
+   private
 
    	def one_correct
-   		judge_sum = Choice.pluck(:judge)
-   		judge_sum.sum
-   		unless judge_sum == 1
-   		errors.add(:choices, "should have one correct answer")
+   		judge = choices.collect {|item|item.judge || nil }.compact.count 
+   		unless judge == 1
+   		errors.add(:choices, ": should have one correct answer")
    		end
-    end
-					  
+    end				  
 end

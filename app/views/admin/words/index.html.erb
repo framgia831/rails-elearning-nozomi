@@ -11,7 +11,15 @@
         </div>
 	<div class="row">
 		<div class="col-md-1 center-block"></div>
-		<div class="col-md-10 center-block">
+		<div class="col-md-7 center-block">
+			<% if flash[:success] %>
+		    <div class="alert alert-info">
+                <ul class="m-0">
+					<li><%= flash[:success]  %></li>
+				</ul>
+			</div>
+			<% end %>
+
     <table class="table table-striped table-responsive">
 	    	<thead>
 	    		<th>Title</th>
