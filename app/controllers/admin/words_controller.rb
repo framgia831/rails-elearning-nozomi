@@ -13,6 +13,7 @@ class Admin::WordsController < ApplicationController
 		@word = @category.words.build(word_params)
 
 		if @word.save
+			flash[:success] = "Word successfully added."
 			redirect_to admin_categories_path
 		else
 			render "new"
@@ -33,6 +34,7 @@ class Admin::WordsController < ApplicationController
 		@category = Category.find_by(id: params[:category_id])
 		@word = @category.words.find(params[:id])
 		if @word.update(word_params)
+		   flash[:success] = "Word successfully updated."
 		   redirect_to admin_categories_path
 		else
 			render "edit"
@@ -43,6 +45,7 @@ class Admin::WordsController < ApplicationController
 		@category = Category.find_by(id: params[:category_id])
 		@word = @category.words.find(params[:id])
 		@word.destroy
+		flash[:success] = "Word successfully deleted."
 		redirect_to admin_category_words_path(category_id: @category.id)
 	end
 

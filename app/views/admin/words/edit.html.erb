@@ -34,6 +34,7 @@
     			<%= c.text_field :content, class: 'form-control' %>
     			<label class="form-check-label ml-1">correct answer</label>
     			<%= c.check_box :judge %>
+
     			<div class="mb-3"></div>
 			<% end %>
 		</div>			
@@ -42,12 +43,12 @@
 			  		<div class="row">
 						<div class="col-md-1 center-block"></div>			  							
 						<div class="col-md-2 center-block">
-							<div style="height: 300px;"></div>
+							<div style="height: 320px;"></div>
 							<%= f.submit "Save", class: "btn btn-outline-primary btn-lg" %>
 						</div>
 					<% end %>
 						<div class="col-md-2 center-block">
-							<div style="height: 300px;"></div>
+							<div style="height: 320px;"></div>
 							<%= button_to "Cancel", admin_category_words_path(category_id: @category.id), method: :get, class: "btn btn-outline-warning btn-lg" %>
 						</div>
 					</div>

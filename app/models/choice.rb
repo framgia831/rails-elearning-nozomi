@@ -3,4 +3,7 @@ class Choice < ApplicationRecord
 
    	validates :content, presence: true,
 					  length: { maximum: 20 }
+
+	validates :judge, inclusion: {in: [true, false]}
+   	
 end
