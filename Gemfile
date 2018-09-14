@@ -35,6 +35,8 @@ gem 'mini_magick', '~> 4.8'
 
 gem 'font-awesome-sass', '~> 5.3.1'
 
+  
+gem 'kaminari'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'faker',          '1.7.3'
