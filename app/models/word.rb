@@ -1,6 +1,7 @@
 class Word < ApplicationRecord
 	belongs_to :category, optional: true
 	has_many :choices, dependent: :destroy
+  has_many :answers, dependent: :destroy
 	
 	accepts_nested_attributes_for :choices
 
@@ -9,9 +10,13 @@ class Word < ApplicationRecord
 					  length: { maximum: 20 }
 
 
-   validate :one_correct
+  validate :one_correct
 
-   private
+  def correct_answer
+    @correct_answer = choices.find_by(judge: true)
+  end
+
+  private
 
    	def one_correct
    		judge = choices.collect {|item|item.judge || nil }.compact.count 

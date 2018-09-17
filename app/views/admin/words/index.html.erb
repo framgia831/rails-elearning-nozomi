@@ -1,11 +1,11 @@
 <div class="container-fluid main">
 	<div class="row">
 		<div class="col-md-1 center-block"></div>
-		<div class="col-md-2 center-block">
+		<div class="col-md-3 center-block mb-3">
             <h2><strong><%= @category.title %> Wordlist: Admin</strong></h2>
         </div>
-        <div class="col-md-8 center-block">
-			<%= link_to "Add New Word",  new_admin_category_word_path(category_id: @category.id), class: "btn btn-info" %>
+        <div class="col-md-8 center-block mb-3">
+			<%= link_to "Add New Word",  new_admin_category_word_path(category_id: @category.id), class: "btn btn-info btn-lg" %>
         </div>
             <hr>
         </div>

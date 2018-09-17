@@ -3,9 +3,8 @@
 		<div class="col-md-1 center-block"></div>
 		<div class="col-md-3 center-block">
 			<div class="row">
-				<div class="col-md-10 center-block">
+				<div class="col-md-10 center-block mb-3">
             		<h2><strong>Category</strong></h2>
-            	<hr>
             	</div>
             	<div class="col-md-2 center-block"></div>
             </div>
@@ -16,25 +15,32 @@
 		<div class="col-md-2 center-block"></div>
 			<% @categories.each do |category| %>
 				<div class="col-md-3 center-block">
-					<div id="lesson-box">
+					<div class="<%= category.words.any? ? "lesson-box" : "lesson-box-prep" %>">
 						<h4>Title</h4>
 			   			<h4><strong><%= category.title %></strong></h4><hr>
 			   			<h4 class="mt-5">Description</h4>
 				    	<h5 style="height: 200px;"><%= category.description %></h5>
-				    </div>
+					</div>
 				    <div class="text-center">
-				    	<%= link_to "Let's Start !",  "#", class: "btn btn-outline-primary btn-lg mt-4" %>
-				    	<%= link_to "Review Words",  "#", class: "btn btn-outline-warning btn-lg mt-4 ml-1" %>
-				    </div>
-				</div>
-		    <% end %>
-		</div>
+				    <% if category.words.empty? %>
+				    <div class="text-center mt-4 mb-1">
+				    	<h3><strong>Getting Ready</strong></h3>
+				    </div>	  
+				    <% elsif @lesson.pluck(:category_id).any?(category.id) %>
+					<% @lesson_test = @lesson.find_by(category_id: category.id) %>
+				    	<%= link_to "Review Words", category_lesson_answers_path(category_id: category.id, lesson_id: @lesson_test.id), class: "btn btn-outline-warning btn-lg mt-4 ml-1" %>
+				    <% else %>
+				    	<%= link_to "Let's Start !",  category_lessons_path(category_id: category.id), method: :post, class: "btn btn-outline-primary btn-lg mt-4" %>
+				    <% end %>
+					</div>
+			</div>
+		<% end %>
+	</div>
 
 	<div class="row">
 		<div class="col-md-1 center-block"></div>
 			<div class="col-md-5 center-block mt-3">
 				<div class="pagenate"><%= will_paginate %></div>
 			</div>
-		</div>
 	</div>
 </div>
