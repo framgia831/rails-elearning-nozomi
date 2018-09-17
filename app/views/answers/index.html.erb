@@ -22,7 +22,7 @@
                     <th></th>
                     <th>Words</th>
                     <th>Answers</th>
-                   <th>Correct answers</th>
+                    <th>Correct answers</th>
                 </thead>
                 <% @lesson_answers.each do |answer| %>
                 <tbody>
@@ -34,7 +34,7 @@
                         <% end %>
                     </td>
                     <td class="description">
-                        <h4><%= answer.choice.content %></h4>
+                        <h4><%= answer.word.content %></h4>
                     </td>
                     <td class="description">
                         <h4><%= answer.choice.content %></h4>
