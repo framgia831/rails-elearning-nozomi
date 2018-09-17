@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-md-1 center-block alert-danger pt-1 mb-1">
-            <h3 class="text-center">Score<hr><%= @point %>/<%= @words.count %></h3>
+            <h3 class="text-center">Score<hr><%= @points %>/<%= @category.words.count %></h3>
         </div>
     </div>
 
@@ -24,24 +24,23 @@
                     <th>Answers</th>
                    <th>Correct answers</th>
                 </thead>
-                <% @lesson_answers.zip(@correct_answers).each do |answer, correct_answer| %>
+                <% @lesson_answers.each do |answer| %>
                 <tbody>
                     <td class="answer_judge">
-                        <% @judge = answer.choice.judge %>
-                        <% if @judge == true %>
-                        <h4 class="text-center"><i class="fas fa-award"></i></h4>
+                        <% if answer.choice.judge %>
+                            <h4 class="text-center"><i class="fas fa-award"></i></h4>
                         <% else %>
-                        <h4 class="text-center"><i class="fa fa-times text-danger"></i></h4>
+                            <h4 class="text-center"><i class="fa fa-times text-danger"></i></h4>
                         <% end %>
-                    </td>
-                    <td class="description">
-                        <h4><%= answer.word.content %></h4>
                     </td>
                     <td class="description">
                         <h4><%= answer.choice.content %></h4>
                     </td>
                     <td class="description">
-                        <h4><%= correct_answer.content %></h4>
+                        <h4><%= answer.choice.content %></h4>
+                    </td>
+                    <td class="description">
+                        <h4><%= answer.word.correct_answer.content %></h4>
                     </td>
                 </tbody>
                 <% end %>
