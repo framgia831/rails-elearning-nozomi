@@ -27,7 +27,7 @@
                     <div class="col-md-4 center-block mt-5">
                         <h3><strong>Choices</strong></h3>
                         <% word.choices.each do |choice| %>
-                            <%= button_to choice.content, "#", :action =>'index', class: "btn btn-outline-warning btn-lg btn-block mt-3 ml-4" %>
+                            <%= button_to choice.content, category_lessons_path(choice_id: choice.id), :action =>'index', class: "btn btn-outline-warning btn-lg btn-block mt-3 ml-4" %>
                         <% end %>
                     </div>
                     <% end %>

@@ -1,0 +1,52 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-9 center-block pr-0 mb-3">
+			<div class="row">
+				<div class="col-md-12 center-block pr-0 mb-3">
+            		<h2><strong>Result: <%= @category.title %></strong></h2>
+            	</div>
+            </div>
+        </div>
+        <div class="col-md-1 center-block alert-danger pt-1 mb-1">
+            <h3 class="text-center">Score<hr><%= @point %>/<%= @words.count %></h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1 center-block"></div>
+        <div class="col-md-10 center-block pr-0">
+
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <th></th>
+                    <th>Words</th>
+                    <th>Answers</th>
+                   <th>Correct answers</th>
+                </thead>
+                <% @lesson_answers.zip(@correct_answers).each do |answer, correct_answer| %>
+                <tbody>
+                    <td class="answer_judge">
+                        <% @judge = answer.choice.judge %>
+                        <% if @judge == true %>
+                        <h4 class="text-center"><i class="fas fa-award"></i></h4>
+                        <% else %>
+                        <h4 class="text-center"><i class="fa fa-times text-danger"></i></h4>
+                        <% end %>
+                    </td>
+                    <td class="description">
+                        <h4><%= answer.word.content %></h4>
+                    </td>
+                    <td class="description">
+                        <h4><%= answer.choice.content %></h4>
+                    </td>
+                    <td class="description">
+                        <h4><%= correct_answer.content %></h4>
+                    </td>
+                </tbody>
+                <% end %>
+            </table>
+            <div class="pagenate"><%= will_paginate @lesson_answers%></div>
+        </div>
+    </div>
+</div>
