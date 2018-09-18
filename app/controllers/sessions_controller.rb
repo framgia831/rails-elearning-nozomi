@@ -19,6 +19,11 @@ class SessionsController < ApplicationController
 		end
 	end
 
+	def show
+		@followers = current_user.following
+		@lessons = Lesson.where(user_id: @followers.ids)
+	end
+
 	def destroy
 		session.destroy
 		flash[:notice] = "Logged out."

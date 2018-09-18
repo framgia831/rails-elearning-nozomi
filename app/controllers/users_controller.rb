@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+		if current_user
+			redirect_to "/dashboard"
+		end
 	end
 
 	def create
@@ -22,6 +25,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@lessons = Lesson.where(user_id: @user)
 	end
 
 	def edit

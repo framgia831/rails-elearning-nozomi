@@ -154,7 +154,7 @@ words = [
                   content: "Sun", 
             },
             {
-                  content: "Sun", 
+                  content: "Planet", 
             },
             {
                   content: "Star", 
@@ -208,7 +208,7 @@ words = [
             choices_attributes:
             [
             {
-                  content: "Saddness", 
+                  content: "Sadness", 
             },
             {
                   content: "Happiness", 

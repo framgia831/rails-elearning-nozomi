@@ -1,0 +1,53 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
+			<div class="row">
+				<div class="col-md-9 center-block">
+            		<h2><strong>Dashboard</strong></h2>
+            	</div>
+            	<div class="col-md-2 center-block">
+				</div>
+			</div>
+            <hr>
+			<div class="row">
+				<div class="col-md-5 center-block">
+            	<%= image_tag current_user.image.url, id: :img_tumb2%>
+            	</div>
+				<div class="col-md-7 center-block">
+            	<h3><strong><%= link_to current_user.name, user_url(current_user) %></strong></h3>
+				<h5>@<%= current_user.department %></h5><hr>
+				<h4><%= link_to "#{current_user.answers.count} Words Learned","#" %></h4>
+				<h4><%= current_user.lessons.count %> Lessons Learned</h4>
+				</div>
+			</div><% %>
+		</div>
+
+        <div class="col-md-1"></div>
+		<div class="col-md-6">
+			<div class="container balloon1-left">
+				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Activity</strong></h3>
+				<hr>
+				<div class="row">
+					<% @lessons.each do |lesson| %>
+					<div class="col-md-2 mb-4">
+						<div class="img ml-4">
+						<%= image_tag lesson.user.image.url, id: :img_tumb%>
+						</div>
+					</div>
+					<div class="col-md-10 mb-4">
+					<% if lesson.user.name == current_user.name %>
+						<p class="activity-text"><%= link_to "You", user_url(lesson.user) %> learned <%= lesson.answers.count %>/<%= lesson.category.words.count %> words in <%= lesson.category.title %></p>
+					<% else %>
+						<p class="activity-text"><%= link_to lesson.user.name, user_url(lesson.user) %> learned <%= lesson.answers.count %>/<%= lesson.category.words.count %> words in <%= lesson.category.title %></p>
+					<% end %>
+						<small class="text-muted">Posted <%= time_ago_in_words (lesson.created_at) %> ago</small>
+					</div>					
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+		</div>
+	</div>
+</div>

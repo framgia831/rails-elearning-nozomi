@@ -71,7 +71,7 @@
     .balloon1-left {
         position: relative;
         display: inline-block;
-        margin: 1.5em 15px 1.5em 15px;
+        margin: 1.5em 15px 0.1em 15px;
         padding: 7px 10px;
         height:100%;
         min-width: 120px;
@@ -85,7 +85,7 @@
     .balloon1-left:before{
         content: "";
         position: absolute;
-        top: 50%;
+        top: 20%;
         left: -30px;
         margin-top: -15px;
         border: 15px solid transparent;
@@ -123,6 +123,11 @@
         font-size: 20px;
     }
 
+    .text-muted_dept {
+        padding-right: 10px;
+        font-size: 20px;
+    }
+
 
     .img-edit {
         height: 250px;
@@ -136,6 +141,12 @@
     #img_tumb {
         width: 70px;
         height: 70px;
+        object-fit: cover;       
+    }
+
+    #img_tumb2 {
+        width: 130px;
+        height: 130px;
         object-fit: cover;       
     }
 
@@ -155,7 +166,7 @@
     }
 
     .nav-link {
-        width: 100px;
+        width: 110px;
         text-align: center;
         font-family: 'Berkshire Swash', cursive;
         color: #fff;
