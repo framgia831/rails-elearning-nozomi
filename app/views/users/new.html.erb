@@ -11,18 +11,29 @@
 		</div>
 		<div class="col-md-1 center-block"></div>
 		<div class="col-md-4 float-left">
+	        <% if login_error = flash[:login] %>
+			    <div class="alert alert-danger">
+			        <%= login_error %>      
+			    </div>
+	    	<% end %>
 			<h2>Create new account</h2>
 
        		<%= form_for @user, url: signup_path do |f| %>
-            <% if @user.errors.any? %>
-                <div class="alert alert-danger">
-                    <ul class="m-0">
-                        <% @user.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
+	            <% if @user.errors.any? %>
+	                <div class="alert alert-danger">
+	                    <ul class="m-0">
+	                        <% @user.errors.full_messages.each do |msg| %>
+	                            <li><%= msg %></li>
+            				<% end %>
+            			</ul>
+            		</div>
+				<% elsif flash[:success] %>
+				    <div class="alert alert-info">
+		                <ul class="m-0">
+							<li><%= flash[:success]  %></li>
+						</ul>
+					</div>
+	            <% end %>
 
         <div class=row>
         	<div class="col-md-10 float-left">

@@ -47,7 +47,7 @@ class SessionsController < ApplicationController
 
  	def require_login
 		unless current_user
-			flash[:login] ="Plase log in."
+			flash[:login] ="You need to login to view this content. Please Login."
 			redirect_to root_url
 		end
 	end

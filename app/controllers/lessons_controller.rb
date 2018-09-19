@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+	before_action :require_login, only: [:create, :index]
 
 	def create
 		@category = Category.find(params[:category_id])
@@ -27,6 +28,13 @@ class LessonsController < ApplicationController
 			if correct_answer_sum.id == choice.choice_id
 				@point += 1
 			end
+		end
+	end
+
+ 	def require_login
+		unless current_user
+			flash[:login] ="You need to login to view this content. Please Login."
+			redirect_to root_url
 		end
 	end
 	

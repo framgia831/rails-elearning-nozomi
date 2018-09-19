@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :require_login, only: [:edit, :update]
+	before_action :require_login, only: [:edit, :update, :index, :show, :update, :edit]
 	before_action :correct_user,   only: [:edit, :update]
 
 	def new
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
+			flash[:success] ="Account successfully created. Please log in."
 			redirect_to root_url
 		else
 			render "new"
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
 
  	def require_login
 		unless current_user
-			flash[:login] ="Plase log in."
+			flash[:login] ="You need to login to view this content. Please Login."
 			redirect_to root_url
 		end
 	end
