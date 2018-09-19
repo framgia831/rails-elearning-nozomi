@@ -24,7 +24,7 @@
 				    <div class="text-center">
 				    <% if category.words.empty? %>
 				    <div class="text-center mt-4 mb-1">
-				    	<h3><strong>Getting Ready</strong></h3>
+				    	<h3><strong>Comming Soon !</strong></h3>
 				    </div>	  
 				    <% elsif @lesson.pluck(:category_id).any?(category.id) %>
 					<% @lesson_test = @lesson.find_by(category_id: category.id) %>

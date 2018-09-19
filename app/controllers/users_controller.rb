@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@lessons = Lesson.where(user_id: @user)
+		@activity = Activity.where(user_id: @user.id).paginate(page: params[:page], per_page: 5)
 	end
 
 	def edit

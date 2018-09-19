@@ -5,6 +5,8 @@ class LessonsController < ApplicationController
 		@lesson = current_user.lessons.create(category: @category)
 
 		if @lesson.save
+			@lesson_activity = @lesson.build_activity(user_id: current_user.id)
+			@lesson_activity.save
 		redirect_to new_category_lesson_answer_path(lesson_id: @lesson.id)
 		end
 	end

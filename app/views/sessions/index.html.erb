@@ -1,0 +1,59 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
+			<div class="row">
+				<div class="col-md-9 center-block">
+            		<h2><strong>Dashboard</strong></h2>
+            	</div>
+            	<div class="col-md-2 center-block">
+				</div>
+			</div>
+            <hr>
+			<div class="row">
+				<div class="col-md-5 center-block">
+            	<%= image_tag current_user.image.url, id: :img_tumb2%>
+            	</div>
+				<div class="col-md-7 center-block">
+            	<h3><strong><%= link_to current_user.name, user_url(current_user) %></strong></h3>
+				<h5>@<%= current_user.department %></h5><hr>
+				<h4 class="text-success"><i class="fas fa-award"></i><%= current_user.answers.count %> Words Learned</h4>
+				<small class="text-muted pr-4">in <%= current_user.lessons.count %> Categories</small>
+				</div>
+			</div><% %>
+		</div>
+
+        <div class="col-md-1"></div>
+		<div class="col-md-6">
+			<div class="container">
+				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Words You Learned</strong></h3>
+				<hr>
+				<div class="row">
+				    <table class="table table-striped table-responsive">
+					    	<thead>
+					    		<th>Words</th>
+					    		<th>Answers</th>
+					    		<th>Categories</th>
+					    	</thead>
+							<% @words.each do |word| %>
+					    	<tbody>
+			                    <td class="description">
+			                        <h4><%= word.content %></h4>
+			                    </td>
+			                    <td class="description">
+			                        <h4><%= word.choices.find_by(judge: true).content %></h4>
+			                    </td>
+			                    <td class="description">
+			                        <h4><%= word.category.title %></h4>
+			                    </td>
+					    	</tbody>
+							<% end %>
+					</table>
+				</div>
+			</div>
+			<div class="pagenate"><%= will_paginate @words %></div>
+		</div>
+		<div class="col-md-1"></div>
+		</div>
+	</div>
+</div>

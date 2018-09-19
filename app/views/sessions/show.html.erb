@@ -17,8 +17,8 @@
 				<div class="col-md-7 center-block">
             	<h3><strong><%= link_to current_user.name, user_url(current_user) %></strong></h3>
 				<h5>@<%= current_user.department %></h5><hr>
-				<h4><%= link_to "#{current_user.answers.count} Words Learned","#" %></h4>
-				<h4><%= current_user.lessons.count %> Lessons Learned</h4>
+				<h4><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h4>
+				<small class="text-muted pr-5">in <%= current_user.lessons.count %> Categories</small>
 				</div>
 			</div><% %>
 		</div>
@@ -26,22 +26,25 @@
         <div class="col-md-1"></div>
 		<div class="col-md-6">
 			<div class="container balloon1-left">
-				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Activity</strong></h3>
+				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
 				<hr>
 				<div class="row">
-					<% @lessons.each do |lesson| %>
+					<% @activity.first(7).each do |activity| %>
 					<div class="col-md-2 mb-4">
-						<div class="img ml-4">
-						<%= image_tag lesson.user.image.url, id: :img_tumb%>
+						<div class="img ml-5">
+						<%= image_tag activity.user.image.url, id: :img_tumb%>
 						</div>
 					</div>
-					<div class="col-md-10 mb-4">
-					<% if lesson.user.name == current_user.name %>
-						<p class="activity-text"><%= link_to "You", user_url(lesson.user) %> learned <%= lesson.answers.count %>/<%= lesson.category.words.count %> words in <%= lesson.category.title %></p>
-					<% else %>
-						<p class="activity-text"><%= link_to lesson.user.name, user_url(lesson.user) %> learned <%= lesson.answers.count %>/<%= lesson.category.words.count %> words in <%= lesson.category.title %></p>
+					<div class="col-md-10 mb-1">
+					<% if activity.actionable_type == "Lesson" %>
+					<% @lesson = Lesson.find(activity.actionable_id)%>
+						<p class="activity-text"><%= link_to activity.user.name, user_url(activity.user) %> learned <%= @lesson.answers.count %>/<%= @lesson.category.words.count %> words in <%= link_to @lesson.category.title, category_lesson_answers_path(category_id: @lesson.category.id, lesson_id: @lesson.id)%></p>
+						<small class="text-muted">Posted <%= time_ago_in_words (@lesson.created_at) %> ago</small>
+					<% elsif activity.actionable_type == "Relationship" %>
+					<% @follow = Relationship.find(activity.actionable_id)%>
+						<p class="activity-text"><%= link_to activity.user.name, user_url(activity.user) %> followed <%= link_to @follow.followed.name, user_url(@follow.followed) %></p>				
+						<small class="text-muted">Posted <%= time_ago_in_words (@follow.created_at) %> ago</small>
 					<% end %>
-						<small class="text-muted">Posted <%= time_ago_in_words (lesson.created_at) %> ago</small>
 					</div>					
 					<% end %>
 				</div>

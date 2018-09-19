@@ -10,12 +10,14 @@ User.create(name: "Nozomi Matsuoka",
                   admin: "1",
                   email: 'n.matsuoka@gmail.com',
                   password: 'nozomi',
+                  biography: "Hello. I'm an administrator of this system :) If you have any questions, please contact me. --> 000-0000-0000",
                   department: "Trans Dept.")
 
 User.create(name: "ai", 
                   admin: "0",
                   email: 'ai@example.com',
                   password: 'ai',
+                  biography: "Hi ! I am a planner of this system. If you have any confusion, please feel free to contact me.",
                   department: "Development Dept.")
 
 User.create(name: "Jane", 

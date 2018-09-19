@@ -5,8 +5,7 @@ class Lesson < ApplicationRecord
   has_many :answers
   has_many :words, through: :answers
   has_many :choices, through: :answers
-
-  default_scope {order(created_at: :desc)}
+  has_one :activity, :as => :actionable
 
   def next_word
   	(category.words - words).first
