@@ -6,7 +6,7 @@
     h1 {
         margin-left: 20px;
     }
-
+    
     .fa{
     font-size:40px;
     margin-right: 10px;
@@ -103,13 +103,13 @@
     }
 
     .activity-text{
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .text-muted {
         float:right;
         padding-right: 10px;
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .text-muted_dept {
@@ -145,13 +145,26 @@
         object-fit: cover;
     }
 
+    .logo-small {
+        font-size: 30px;
+        color: #FFF;
+        margin-left: 20px;
+        font-family: 'Berkshire Swash', cursive;
+        text-decoration: none;        
+    }
+
     .nav-item {
-        font-size: 20px;
+        font-size: 15px;
+        text-align: right;
+        float: right;
     }
 
     .navbar {
+        background: url("/app/assets/images/top-image1.jpg");
         margin-top: 70px;
-        float: right;
+        width: 100%;
+        height: 60px;
+        float: left;
     }
 
     .nav-link {
@@ -182,10 +195,6 @@
         width: 300px;
     }
 
-    .pagenate {
-        font-size: 30px;
-    }
-
     .name {
         width: 400px;
     }
@@ -201,6 +210,7 @@
 
     .body {
         height: 650px;
+        padding-top:70px;
     }
 
     .title {
@@ -289,6 +299,7 @@
     }
 
     footer {
+        z-index: 0;
         position: fixed;
         bottom: 0;
         margin-bottom: 0;
@@ -296,18 +307,27 @@
         height: 60px;
         background: #000000c4;
         color: #FFF;
+        font-family: 'Berkshire Swash', cursive;
+        font-size: 15px;
+    }
+
+    #pagenate {
+        font-size: 25px;
+        z-index: 3;
     }
 
     .pagination {
-        position: static;
-        bottom: 100px;
+        z-index: 3;
+        position: fixed;
+        bottom: 10px;
         margin-bottom: 100px;
         width: 100%;
         padding: 3px;
         margin: 3px;
     }
     .pagination a {
-        padding: 2px 5px 2px 5px;
+        z-index: 3;
+        padding: 5px 8px 5px 8px;
         margin: 2px;
         border: 1px solid #aaaadd;
         text-decoration: none;
@@ -315,11 +335,13 @@
         background-color: #9e9e9e;
     }
     .pagination a:hover, .pagination a:active {
+        z-index: 3;
         border: 1px solid #1a09e8;
         color: #FFF;
     }
     .pagination span.current {
-        padding: 2px 5px 2px 5px;
+        z-index: 3;
+        padding: 5px 8px 5px 8px;
         margin: 2px;
         border: 1px solid #000000;
         font-weight: bold;
@@ -327,7 +349,8 @@
         color: #1a09e8;
     }
     .pagination span.disabled {
-        padding: 2px 5px 2px 5px;
+        z-index: 3;
+        padding: 5px 8px 5px 8px;
         margin: 2px;
         border: 1px solid #eee;
         color: #ddd;
@@ -347,4 +370,17 @@
         text-align: center;
         margin: 0; 
         padding: 0;
+    }
+
+    .header-small {
+        left:0;
+        line-height:1;
+        position:fixed;
+        top:0;
+        width:100%;
+        z-index:4;
+    }
+
+    .header-large {
+        padding: -70px 0;
     }

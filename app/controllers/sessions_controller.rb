@@ -19,24 +19,12 @@ class SessionsController < ApplicationController
 		ids = current_user.following.ids
 		ids << current_user.id
 
-		@activity = Activity.where(user_id: ids)
+		@activities = Activity.where(user_id: ids)
+		@activities = @activities[1..10]
 	end
 
 	def index
-		@activity = Activity.where(user_id: current_user.id)
-		@lessons = Lesson.where(user_id: current_user.id)
-
-		@ids = [nil]
-		@lessons.each do |lesson|
-			@ids << lesson.word_ids
-		end
-
-		if @ids == [nil]
-			render "show"
-		else
-		@ids.flatten!.compact!
-		@words = Word.where(id: @ids).paginate(page: params[:page], per_page: 8)
-		end
+		@words = current_user.words.paginate(page: params[:page], per_page: 8)
 	end
 
 	def destroy

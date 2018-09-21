@@ -21,6 +21,7 @@ class User < ApplicationRecord
 	has_many :followers, through: :passive_relationships, source: :follower
 	has_many :lessons
 	has_many :answers, through: :lessons
+	has_many :words, through: :answers
 
 	mount_uploader :image, ImageUploader
 

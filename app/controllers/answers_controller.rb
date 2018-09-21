@@ -32,19 +32,8 @@ class AnswersController < ApplicationController
 		@lesson = Lesson.find(params[:lesson_id])
 		@points = @lesson.choices.where(judge: true).size
 
-		@lesson_answers = @lesson.answers.paginate(page: params[:page], per_page: 7)
-	end
-
-	# private
-
-	# def word_params
- #    	params.require(:word).permit(:content, :category_id, 
- #    		choices_attributes: [:content, :judge, :id])
- # 	end
-
-	# def answer_params
- #    	params.require(:answer).permit(:lesson_id, :word_id, :choice_id)
- # 	end
+		@lesson_answers = @lesson.answers.paginate(page: params[:page], per_page: 10)
+	endd
 	
  	def require_login
 		unless current_user

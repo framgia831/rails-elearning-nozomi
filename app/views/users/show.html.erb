@@ -17,13 +17,12 @@
             <hr>
 			<div class="row">
 				<div class="col-md-1 center-block"></div>
-				<div class="col-md-11 center-block">
+				<div class="col-md-11 center-block mb-5">
             	<%= image_tag @user.image.url, id: :img_prev%>
             	<h3 class="mt-2"><strong><%= @user.name %></strong>
             		<small class="text-muted_dept">[@<%= @user.department %>]</small></h3>
 				<h5><i class="fa fa-envelope" aria-hidden="true"></i><%= @user.email %></h5>
 				<h5 class="text-success mt-4"><%= @user.biography %></h5>
-				<p></p>
 
 			<div class="row">
 				<div class="col-md-6 center-block mb-1">
@@ -47,12 +46,12 @@
 			</div>
         </div>
         <div class="col-md-1"></div>
-		<div class="col-md-6">
+		<div class="col-md-6 mb-5">
 			<div class="container balloon1-left">
 				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
 				<hr>
 				<div class="row">
-					<% @activity.first(7).each do |activity| %>
+					<% @activities.each do |activity| %>
 					<div class="col-md-2 mb-4">
 						<div class="img ml-5">
 						<%= image_tag activity.user.image.url, id: :img_tumb%>

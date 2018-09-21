@@ -12,45 +12,52 @@
             <hr>
 			<div class="row">
 				<div class="col-md-5 center-block">
-            	<%= image_tag current_user.image.url, id: :img_tumb2%>
+            		<%= image_tag current_user.image.url, id: :img_tumb2%>
             	</div>
 				<div class="col-md-7 center-block">
-            	<h3><strong><%= link_to current_user.name, user_url(current_user) %></strong></h3>
-				<h5>@<%= current_user.department %></h5><hr>
-				<h4><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h4>
-				<small class="text-muted pr-5">in <%= current_user.lessons.count %> Categories</small>
+            		<h3><strong><%= link_to current_user.name, user_url(current_user) %></strong></h3>
+					<h5>@<%= current_user.department %></h5><hr>
+					<h4><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h4>
+					<small class="text-muted pr-5">in <%= current_user.lessons.count %> Categories</small>
+            		<p class="mt-5 pull-left"><%= link_to progress_path do%>Go to Leaned Words <i class="fa fa-arrow-circle-o-right"></i><% end %></p>
 				</div>
-			</div><% %>
+			</div>
 		</div>
 
         <div class="col-md-1"></div>
-		<div class="col-md-6">
+		<div class="col-md-6 mb-5">
 			<div class="container balloon1-left">
 				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
 				<hr>
 				<div class="row">
-					<% @activity.first(7).each do |activity| %>
-					<div class="col-md-2 mb-4">
+					<% @activities.each do |activity| %>
+					<div class="col-md-2">
 						<div class="img ml-5">
-						<%= image_tag activity.user.image.url, id: :img_tumb%>
+							<%= image_tag activity.user.image.url, id: :img_tumb%>
 						</div>
 					</div>
-					<div class="col-md-10 mb-1">
-					<% if activity.actionable_type == "Lesson" %>
-					<% @lesson = Lesson.find(activity.actionable_id)%>
-						<p class="activity-text"><%= link_to activity.user.name, user_url(activity.user) %> learned <%= @lesson.answers.count %>/<%= @lesson.category.words.count %> words in <%= link_to @lesson.category.title, category_lesson_answers_path(category_id: @lesson.category.id, lesson_id: @lesson.id)%></p>
+					<div class="col-md-10 mb-4">
+						<% if activity.actionable.is_a?(Lesson) %>
+						<% @lesson = activity.actionable%>
+							<p class="activity-text">
+								<%= link_to activity.user.name, activity.user %> learned
+								<%= @lesson.answers.count %>/<%= @lesson.category.words.count %> words in
+								<%= link_to @lesson.category.title, category_lesson_answers_path(@lesson.category, @lesson)%></p>
+							</p>
 						<small class="text-muted">Posted <%= time_ago_in_words (@lesson.created_at) %> ago</small>
-					<% elsif activity.actionable_type == "Relationship" %>
-					<% @follow = Relationship.find(activity.actionable_id)%>
-						<p class="activity-text"><%= link_to activity.user.name, user_url(activity.user) %> followed <%= link_to @follow.followed.name, user_url(@follow.followed) %></p>				
+						<% elsif activity.actionable.is_a?(Relationship) %>
+						<% @follow = activity.actionable %>
+							<p class="activity-text">
+								<%= link_to activity.user.name, activity.user %> followed
+								<%= link_to @follow.followed.name, @follow.followed %>
+							</p>				
 						<small class="text-muted">Posted <%= time_ago_in_words (@follow.created_at) %> ago</small>
-					<% end %>
+						<% end %>
 					</div>					
 					<% end %>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-1"></div>
-		</div>
 	</div>
 </div>

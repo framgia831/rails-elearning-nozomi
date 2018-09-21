@@ -23,7 +23,7 @@ class Admin::WordsController < ApplicationController
 
 	def index
 		@category = Category.find_by(id: params[:category_id])
-		@words = @category.words.all.paginate(page: params[:page], per_page: 8)
+		@words = @category.words.all.paginate(page: params[:page], per_page: 7)
 		if @words.empty?
 			flash[:success] = "Firstly, please add words of this category."
 			redirect_to admin_categories_path

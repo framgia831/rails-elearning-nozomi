@@ -1,17 +1,17 @@
 <div class="container-fluid main">
 	<div class="row">
 		<div class="col-md-1 center-block"></div>
-		<div class="col-md-2 center-block  mb-3">
+		<div class="col-md-3 center-block  mb-3">
             <h2><strong>Categories: Admin</strong></h2>
         </div>
-		<div class="col-md-8 center-block  mb-3">
+		<div class="col-md-2 center-block  mb-3">
 			<%= link_to "Add New Category",  new_admin_category_path,
 			class: "btn btn-info btn-lg" %>
         </div>
     </div>
 	<div class="row">
 		<div class="col-md-1 center-block"></div>
-		<div class="col-md-10 center-block">
+		<div class="col-md-10 center-block mb-5">
 			<% if flash[:success] %>
 		    <div class="alert alert-info">
                 <ul class="m-0">
@@ -43,12 +43,12 @@
 						<%= link_to  edit_admin_category_path(category)  do%><i class="fa fa-pencil"></i>Edit Category<% end %></h4>
 					<h4 class="float-left mr-2">
 						<%= link_to  admin_category_path(category.id), method: :delete  do%><i class="fa fa-times-circle"></i>Del. Category<% end %></h4>
-					<h4 class="float-left mr-2">
 				</td>	
 	    	</tbody>
 	    <% end %>
 	</table>
-	<div class="pagenate"><%= will_paginate %></div>
-</div>
-<div class="col-md-1 center-block"></div>
+		<div class="pagenate"><%= will_paginate %></div>
+		<div class="col-md-1 center-block"></div>
+		</div>
+	</div>
 </div>
