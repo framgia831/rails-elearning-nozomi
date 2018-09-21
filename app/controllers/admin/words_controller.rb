@@ -1,4 +1,5 @@
 class Admin::WordsController < ApplicationController
+	before_action :require_login, only: [:new, :index, :edit, :update]
 
 	def new
 		@category = Category.find_by(id: params[:category_id])
@@ -14,7 +15,7 @@ class Admin::WordsController < ApplicationController
 
 		if @word.save
 			flash[:success] = "Word successfully added."
-			redirect_to admin_categories_path
+			redirect_to admin_category_words_path
 		else
 			render "new"
 		end
@@ -22,7 +23,11 @@ class Admin::WordsController < ApplicationController
 
 	def index
 		@category = Category.find_by(id: params[:category_id])
-		@words = @category.words.all.paginate(page: params[:page], per_page: 8)
+		@words = @category.words.all.paginate(page: params[:page], per_page: 7)
+		if @words.empty?
+			flash[:success] = "Firstly, please add words of this category."
+			redirect_to admin_categories_path
+		end
 	end
 
 	def edit
@@ -35,7 +40,7 @@ class Admin::WordsController < ApplicationController
 		@word = @category.words.find(params[:id])
 		if @word.update(word_params)
 		   flash[:success] = "Word successfully updated."
-		   redirect_to admin_categories_path
+		   redirect_to admin_category_words_path
 		else
 			render "edit"
 		end
@@ -56,4 +61,11 @@ class Admin::WordsController < ApplicationController
     		choices_attributes: [:content, :judge, :id])
  	end
 	
+ 	def require_login
+		unless current_user
+			flash[:login] ="You need to login to view this content. Please Login."
+			redirect_to root_url
+		end
+	end
+
 end

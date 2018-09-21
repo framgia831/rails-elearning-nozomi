@@ -17,18 +17,18 @@
             <hr>
 			<div class="row">
 				<div class="col-md-1 center-block"></div>
-				<div class="col-md-11 center-block">
+				<div class="col-md-11 center-block mb-5">
             	<%= image_tag @user.image.url, id: :img_prev%>
-            	<h3><%= @user.name %></h3>
-				<p><%= @user.email %></p>
-				<p><%= @user.biography %></p>
-				<p>@<%= @user.department %></p>
+            	<h3 class="mt-2"><strong><%= @user.name %></strong>
+            		<small class="text-muted_dept">[@<%= @user.department %>]</small></h3>
+				<h5><i class="fa fa-envelope" aria-hidden="true"></i><%= @user.email %></h5>
+				<h5 class="text-success mt-4"><%= @user.biography %></h5>
 
 			<div class="row">
-				<div class="col-md-6 center-block">
+				<div class="col-md-6 center-block mb-1">
 				<h5><%= @user.followers.count %> followers</h5>
 				</div>
-				<div class="col-md-6 center-block">
+				<div class="col-md-6 center-block mb-1">
 				<h5><%= @user.followed.count %> following</h5>
 				</div>
 			</div>
@@ -46,24 +46,14 @@
 			</div>
         </div>
         <div class="col-md-1"></div>
-		<div class="col-md-6">
+		<div class="col-md-6 mb-5">
 			<div class="container balloon1-left">
-				<h3><i class="fa fa-book"></i><strong><%=@user.name%>'s Activity</strong></h3>
+				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
 				<hr>
-				<div class="row">
-					<div class="col-md-2">
-						<div class="img">
-						<%= image_tag @user.image.url, id: :img_tumb%>
-						</div>
-					</div>
-					<div class="col-md-10">
-						<p class="activity-text">You learned 10/20 words in Category#</p>
-						<small class="text-muted">Posted # ago</small>
-						</div>
-					</div>
-				</div>
+					<%= render @activities %>
 			</div>
-		 <div class="col-md-1"></div>
+		</div>
+		<div class="col-md-1"></div>
 		</div>
 	</div>
 </div>

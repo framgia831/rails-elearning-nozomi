@@ -1,0 +1,23 @@
+<div class="media ml-3">
+	<div class="img m-2 align-self-center">
+		<%= image_tag activity.user.image.url, id: :img_tumb%>
+	</div>
+	<div class="media-body m-2 pr-5">
+		<% if activity.actionable.is_a?(Lesson) %>
+			<% @lesson = activity.actionable%>
+				<p class="activity-text">
+					<%= link_to activity.user.name, activity.user %> learned
+					<%= @lesson.answers.count %>/<%= @lesson.category.words.count %> words in
+					<%= link_to @lesson.category.title, category_lesson_answers_path(@lesson.category, @lesson)%>
+				</p>
+				<small>Posted <%= time_ago_in_words (@lesson.created_at) %> ago</small>
+		<% elsif activity.actionable.is_a?(Relationship) %>
+			<% @follow = activity.actionable %>
+				<p class="activity-text">
+					<%= link_to activity.user.name, activity.user %> followed
+					<%= link_to @follow.followed.name, @follow.followed %>
+				</p>				
+				<small>Posted <%= time_ago_in_words (@follow.created_at) %> ago</small>
+		<% end %>
+	</div>
+</div>				

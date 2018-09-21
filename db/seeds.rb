@@ -10,19 +10,27 @@ User.create(name: "Nozomi Matsuoka",
                   admin: "1",
                   email: 'n.matsuoka@gmail.com',
                   password: 'nozomi',
+                  biography: "Hello. I'm an administrator of this system :) If you have any questions, please contact me. --> 000-0000-0000",
                   department: "Trans Dept.")
 
 User.create(name: "ai", 
                   admin: "0",
                   email: 'ai@example.com',
                   password: 'ai',
+                  biography: "Hi ! I am a planner of this system. If you have any confusion, please feel free to contact me.",
                   department: "Development Dept.")
 
-User.create(name: "Jane", 
+User.create(name: "Cherry Nicavera", 
                   admin: "0",
-                  email: 'jane@example.com',
-                  password: 'jane',
-                  department: "Management Dept.")
+                  email: 'cherry@example.com',
+                  password: 'cherry',
+                  department: "English Dept.")
+
+User.create(name: "Rhona Marie Alimpolos", 
+                  admin: "0",
+                  email: 'rhona@example.com',
+                  password: 'rhona',
+                  department: "English Dept.")
 
 30.times do |n|
   name  = Faker::Name.name
@@ -46,12 +54,12 @@ end
 
 categories = [
 {
-      title: "Basic noun 30", 
-      description: "This is test category. 30 basically words are registered in this category. Please try this at first."
+      title: "Basic noun 10: French", 
+      description: "This is test category. 10 basic words are registered in this category. Please try this at first."
 },
 {
-      title: "Basic verb 60", 
-      description: "This is test category. 60 basically words are registered in this category. Please try this at second."
+      title: "Basic noun 10: Japanese", 
+      description: "This is test category. 10 basic words are registered in this category. Please try this at first."
 },
 {
       title: "Advanced noun 30", 
@@ -154,7 +162,7 @@ words = [
                   content: "Sun", 
             },
             {
-                  content: "Sun", 
+                  content: "Planet", 
             },
             {
                   content: "Star", 
@@ -208,7 +216,7 @@ words = [
             choices_attributes:
             [
             {
-                  content: "Saddness", 
+                  content: "Sadness", 
             },
             {
                   content: "Happiness", 
@@ -259,12 +267,212 @@ words = [
                   content: "Bad", 
             }
             ]
-}
+      }
 ]
 
 
 
 category = Category.first
+
+words.each do |word_params|
+      category.words.create!(word_params)
+end
+
+words = [
+      {      
+      content: "朝", 
+      choices_attributes:
+            [
+            {
+                  content: "Noon", 
+            },
+            {
+                  content: "Morning", 
+                  judge:"1",
+            },
+            {
+                  content: "Evening", 
+            },
+            {
+                  content: "Night", 
+            }
+            ]
+      },
+      {
+            content: "水", 
+            choices_attributes:
+            [
+            {
+                  content: "Water", 
+                  judge:"1",
+            },
+            {
+                  content: "Sky", 
+            },
+            {
+                  content: "Ripple", 
+            },
+            {
+                  content: "Night", 
+            }
+            ]
+      },
+      {
+            content: "夢", 
+            choices_attributes:
+            [
+            {
+                  content: "Future", 
+            },
+            {
+                  content: "Night", 
+            },
+            {
+                  content: "Dream", 
+                  judge:"1",
+            },
+            {
+                  content: "White", 
+            }
+            ]
+      },
+      {
+            content: "過去", 
+            choices_attributes:
+            [
+            {
+                  content: "Future", 
+            },
+            {
+                  content: "Past", 
+                  judge:"1", 
+            },
+            {
+                  content: "Time",
+            },
+            {
+                  content: "Hour",
+            }
+            ]
+      },
+      {
+            content: "太陽", 
+            choices_attributes:
+            [
+            {
+                  content: "Sun", 
+                  judge:"1",
+            },
+            {
+                  content: "Planet", 
+            },
+            {
+                  content: "Star", 
+            },
+            {
+                  content: "Moon", 
+            }
+            ]
+      },
+      {
+            content: "変人", 
+            choices_attributes:
+            [
+            {
+                  content: "Star", 
+            },
+            {
+                  content: "Silius", 
+            },
+            {
+                  content: "Stage", 
+            },
+            {
+                  content: "Stranger",
+                  judge:"1",
+            }
+            ]
+      },
+      {
+            content: "現実", 
+            choices_attributes:
+            [
+            {
+                  content: "Reality", 
+                  judge:"1",
+            },
+            {
+                  content: "Jewel", 
+            },
+            {
+                  content: "Home", 
+            },
+            {
+                  content: "Canpany", 
+            }
+            ]
+      },
+      {
+            content: "喜び", 
+            choices_attributes:
+            [
+            {
+                  content: "Sadness", 
+            },
+            {
+                  content: "Happiness", 
+            },
+            {
+                  content: "Hope", 
+            },
+            {
+                  content: "Joy", 
+                  judge:"1",
+            }
+            ]
+      },
+      {
+            content: "幻想", 
+            choices_attributes:
+            [
+            {
+                  content: "Farm", 
+            },
+            {
+                  content: "Form", 
+            },
+            {
+                  content: "Fantasy", 
+                  judge:"1",
+            },
+            {
+                  content: "Family", 
+            }
+            ]
+      },
+      {
+            content: "嘘", 
+            choices_attributes:
+            [
+            {
+                  content: "True", 
+            },
+            {
+                  content: "False", 
+            },
+            {
+                  content: "Lie",
+                  judge:"1", 
+            },
+            {
+                  content: "Honesty", 
+            }
+            ]
+}
+]
+
+
+category = Category.find(2)
 
 words.each do |word_params|
       category.words.create!(word_params)

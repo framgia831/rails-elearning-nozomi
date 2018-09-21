@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+	before_action :require_login, only: [:new, :index, :show, :edit]
 	before_action :administrator
 
 	def new
@@ -17,7 +18,7 @@ class Admin::CategoriesController < ApplicationController
 	end
 
 	def index
-		@categories = Category.paginate(page: params[:page], per_page: 3)
+		@categories = Category.paginate(page: params[:page], per_page: 5)
 	end
 
 	def show
@@ -56,5 +57,12 @@ class Admin::CategoriesController < ApplicationController
 			redirect_to root_url
 		end
     end
+
+ 	def require_login
+		unless current_user
+			flash[:login] ="You need to login to view this content. Please Login."
+			redirect_to root_url
+		end
+	end
 
 end

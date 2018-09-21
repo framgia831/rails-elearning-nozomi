@@ -1,0 +1,40 @@
+<div class="container-fluid main">
+	<div class="row">
+		<div class="col-md-1 center-block"></div>
+		<div class="col-md-3 center-block">
+			<div class="row">
+				<div class="col-md-9 center-block">
+            		<h2><strong>Dashboard</strong></h2>
+            	</div>
+            	<div class="col-md-2 center-block">
+				</div>
+			</div>
+            <hr>
+			<div class="media">
+				<div class="img m-2">
+            		<%= image_tag current_user.image.url, id: :img_tumb2%>
+            	</div>
+				<div class="media-body m-2">
+            		<h4><strong><%= link_to current_user.name, user_url(current_user) %></strong></h4>
+					<h5>@<%= current_user.department %></h5><hr>
+					<h4><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h4>
+					<h5>(in <%= current_user.lessons.count %> Categories)</h5>
+				</div>
+			</div>
+			<hr>
+			<p class="pull-left"><%= link_to progress_path do%>Go to Leaned Words 
+				<i class="fa fa-arrow-circle-o-right"></i><% end %></p>
+		</div>
+
+        <div class="col-md-1"></div>
+		<div class="col-md-6 mb-5">
+			<div class="container balloon1-left">
+				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
+				<hr>
+					<%= render @activities %>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>

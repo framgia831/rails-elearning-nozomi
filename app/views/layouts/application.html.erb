@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>E-Learning |sign up</title>
+    <title>E-Learning</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag 'favicon.ico' %>
@@ -23,26 +23,18 @@
   <body>
   <header>
     <div class="container-fluid">
-
-      <div class="jumbotron jumbotron-fluid text-white alpha60" style="background: url(<%= asset_path "top-image1.jpg" %>); background-size:cover;">
-
-      <div class="row">
-        <div class="col-md-7">
-          <%= link_to "Framgia E-Learning", "#", class: "logo"%>
-        </div>
-
-          <div class="col-md-5">
-            <% if current_user %>
-                <%= render "layouts/navigation" %>
-            <% else%>
-                <%= render "layouts/login" %>
-            <% end %>
-          </div>
-        </div>
+      <div class=row>
+        <% if current_user %>
+          <%= render "layouts/navigation" %>
+        <% else%>
+          <%= render "layouts/login" %>
+        <% end %>
       </div>
-    </div>
+      </div>
   </header>
+
   <div class="body">
+    <div class="container-fluid">    
 
     <%= yield %>
 
@@ -51,8 +43,7 @@
   </div>
 
   <footer id="footer">
-    <hr>
-    <p class="text-right mr-3">Copyright -. All Rights Reserved.</p>
+    <p class="text-right mr-3 mt-3">Copyright -. All Rights Reserved.</p>
   </footer>
   
   </body>
