@@ -50,26 +50,7 @@
 			<div class="container balloon1-left">
 				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
 				<hr>
-				<div class="row">
-					<% @activities.each do |activity| %>
-					<div class="col-md-2 mb-4">
-						<div class="img ml-5">
-						<%= image_tag activity.user.image.url, id: :img_tumb%>
-						</div>
-					</div>
-					<div class="col-md-10 mb-1">
-					<% if activity.actionable_type == "Lesson" %>
-					<% @lesson = Lesson.find(activity.actionable_id)%>
-						<p class="activity-text"><%= activity.user.name %> learned <%= @lesson.answers.count %>/<%= @lesson.category.words.count %> words in <%= link_to @lesson.category.title, category_lesson_answers_path(category_id: @lesson.category.id, lesson_id: @lesson.id)%></p>
-						<small class="text-muted">Posted <%= time_ago_in_words (@lesson.created_at) %> ago</small>
-					<% elsif activity.actionable_type == "Relationship" %>
-					<% @follow = Relationship.find(activity.actionable_id)%>
-						<p class="activity-text"><%= activity.user.name %> followed <%= link_to @follow.followed.name, user_url(@follow.followed) %></p>				
-						<small class="text-muted">Posted <%= time_ago_in_words (@follow.created_at) %> ago</small>
-					<% end %>
-					</div>					
-					<% end %>
-				</div>
+					<%= render @activities %>
 			</div>
 		</div>
 		<div class="col-md-1"></div>

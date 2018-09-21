@@ -15,7 +15,7 @@ class Admin::WordsController < ApplicationController
 
 		if @word.save
 			flash[:success] = "Word successfully added."
-			redirect_to admin_categories_path
+			redirect_to admin_category_words_path
 		else
 			render "new"
 		end
@@ -40,7 +40,7 @@ class Admin::WordsController < ApplicationController
 		@word = @category.words.find(params[:id])
 		if @word.update(word_params)
 		   flash[:success] = "Word successfully updated."
-		   redirect_to admin_categories_path
+		   redirect_to admin_category_words_path
 		else
 			render "edit"
 		end

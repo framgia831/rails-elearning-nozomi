@@ -33,7 +33,9 @@ class AnswersController < ApplicationController
 		@points = @lesson.choices.where(judge: true).size
 
 		@lesson_answers = @lesson.answers.paginate(page: params[:page], per_page: 10)
-	endd
+	end
+
+	private
 	
  	def require_login
 		unless current_user

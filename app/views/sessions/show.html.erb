@@ -10,18 +10,20 @@
 				</div>
 			</div>
             <hr>
-			<div class="row">
-				<div class="col-md-5 center-block">
+			<div class="media">
+				<div class="img m-2">
             		<%= image_tag current_user.image.url, id: :img_tumb2%>
             	</div>
-				<div class="col-md-7 center-block">
-            		<h3><strong><%= link_to current_user.name, user_url(current_user) %></strong></h3>
+				<div class="media-body m-2">
+            		<h4><strong><%= link_to current_user.name, user_url(current_user) %></strong></h4>
 					<h5>@<%= current_user.department %></h5><hr>
 					<h4><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h4>
-					<small class="text-muted pr-5">in <%= current_user.lessons.count %> Categories</small>
-            		<p class="mt-5 pull-left"><%= link_to progress_path do%>Go to Leaned Words <i class="fa fa-arrow-circle-o-right"></i><% end %></p>
+					<h5>(in <%= current_user.lessons.count %> Categories)</h5>
 				</div>
 			</div>
+			<hr>
+			<p class="pull-left"><%= link_to progress_path do%>Go to Leaned Words 
+				<i class="fa fa-arrow-circle-o-right"></i><% end %></p>
 		</div>
 
         <div class="col-md-1"></div>
@@ -29,32 +31,7 @@
 			<div class="container balloon1-left">
 				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
 				<hr>
-				<div class="row">
-					<% @activities.each do |activity| %>
-					<div class="col-md-2">
-						<div class="img ml-5">
-							<%= image_tag activity.user.image.url, id: :img_tumb%>
-						</div>
-					</div>
-					<div class="col-md-10 mb-4">
-						<% if activity.actionable.is_a?(Lesson) %>
-						<% @lesson = activity.actionable%>
-							<p class="activity-text">
-								<%= link_to activity.user.name, activity.user %> learned
-								<%= @lesson.answers.count %>/<%= @lesson.category.words.count %> words in
-								<%= link_to @lesson.category.title, category_lesson_answers_path(@lesson.category, @lesson)%></p>
-							</p>
-						<small class="text-muted">Posted <%= time_ago_in_words (@lesson.created_at) %> ago</small>
-						<% elsif activity.actionable.is_a?(Relationship) %>
-						<% @follow = activity.actionable %>
-							<p class="activity-text">
-								<%= link_to activity.user.name, activity.user %> followed
-								<%= link_to @follow.followed.name, @follow.followed %>
-							</p>				
-						<small class="text-muted">Posted <%= time_ago_in_words (@follow.created_at) %> ago</small>
-						<% end %>
-					</div>					
-					<% end %>
+					<%= render @activities %>
 				</div>
 			</div>
 		</div>

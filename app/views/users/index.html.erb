@@ -10,13 +10,15 @@
 		<div class="col-md-10 center-block">
     		<table class="table table-striped table-responsive mb-5">
 		    	<thead>
+		    		<th></th>
 		    		<th>Name</th>
 		    		<th>Biography</th>
 					<th>Department</th>
 		    	</thead>
 				<% @users.each do |user| %>
 			    	<tbody>
-			    		<td class="name"><h4><%= image_tag user.image.url, id: :img_prev2%>
+			    		<td style="width: 0;"><%= image_tag user.image.url, id: :img_prev2%></td>
+			    		<td class="name"><h4>
 			    			<%= link_to user.name, user_url(user) %></h4></td>
 			    		<td class="biography"><h5><%= user.biography %></h5></td>
 						<td><h5><%= user.department %></h5></td>    		  		

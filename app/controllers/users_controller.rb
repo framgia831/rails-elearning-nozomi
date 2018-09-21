@@ -26,8 +26,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@activities = Activity.where(user_id: @user.id)
-		@activities = @activities[1..10]
+		@activities = Activity.where(user_id: @user.id).take(10)
 	end
 
 	def edit

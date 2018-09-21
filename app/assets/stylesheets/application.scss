@@ -60,9 +60,9 @@
     .balloon1-left {
         position: relative;
         display: inline-block;
-        margin: 1.5em 15px 0.1em 15px;
+        margin: 1.5em 15px 1.5em 15px;
         padding: 7px 10px;
-        height:100%;
+        height:95%;
         min-width: 120px;
         max-width: 80%;
         color: #555;
@@ -106,11 +106,6 @@
         font-size: 20px;
     }
 
-    .text-muted {
-        float:right;
-        padding-right: 10px;
-        font-size: 15px;
-    }
 
     .text-muted_dept {
         padding-right: 10px;
@@ -134,8 +129,8 @@
     }
 
     #img_tumb2 {
-        width: 130px;
-        height: 130px;
+        width: 90px;
+        height: 90px;
         object-fit: cover;       
     }
 

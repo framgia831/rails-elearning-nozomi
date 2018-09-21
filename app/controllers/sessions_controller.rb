@@ -19,8 +19,7 @@ class SessionsController < ApplicationController
 		ids = current_user.following.ids
 		ids << current_user.id
 
-		@activities = Activity.where(user_id: ids)
-		@activities = @activities[1..10]
+		@activities = Activity.where(user_id: ids).take(10)
 	end
 
 	def index
@@ -32,6 +31,8 @@ class SessionsController < ApplicationController
 		flash[:notice] = "Logged out."
 		redirect_to root_url
 	end
+
+	private
 
  	def require_login
 		unless current_user
