@@ -31,10 +31,10 @@
 							<% if user == User.first %>
 								<small class="text-info"><i class="fa fa-key ml-2 "></i></small>
 							<% elsif user.admin == true %>
-								<%= link_to admin_user_path(user), class: "btn btn-outline-info pr-4", method: :patch do %><i class="fa fa-key"></i>Active<% end %>
+								<%= link_to admin_user_path(user), class: "btn btn-outline-info", method: :patch do %><i class="fa fa-key"></i>Deactivate<% end %>
 							<% else %>
-								<%= link_to admin_user_path(user), class: "btn btn-outline-dark", method: :patch do%>
-								<i class="fa fa-key text-muted"></i>Deactive<% end %>
+								<%= link_to admin_user_path(user), class: "btn btn-outline-dark pr-4", method: :patch do%>
+								<i class="fa fa-key text-muted"></i>Activate<% end %>
 							<% end %>
 						</td>			
 			    	</tbody>
