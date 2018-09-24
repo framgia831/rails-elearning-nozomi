@@ -8,11 +8,14 @@ class Admin::UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.admin?
-			@user.admin = false
-		else
-			@user.admin = true
-		end
+		@user.admin = true
+		@user.save
+		redirect_to admin_users_path
+	end
+
+	def destroy
+		@user = User.find(params[:id])
+		@user.admin = false
 		@user.save
 		redirect_to admin_users_path
 	end

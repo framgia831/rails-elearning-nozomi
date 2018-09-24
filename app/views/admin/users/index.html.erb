@@ -35,7 +35,7 @@
 								<small><i class="fa fa-key ml-2"></i></small>
 							<% elsif user.admin? %>
 								<small><i class="fa fa-key ml-2 mr-5"></i>
-								<%= link_to "Deactivate", admin_user_path(user), class: "btn btn-outline-dark", method: :patch %></small>
+								<%= link_to "Deactivate", admin_user_path(user), class: "btn btn-outline-dark", method: :delete %></small>
 							<% else %>
 								<small><i class="fa fa-key ml-2 mr-5 text-muted"></i>
 								<%= link_to "Activate", admin_user_path(user), class: "btn btn-outline-info", method: :patch%></small>
