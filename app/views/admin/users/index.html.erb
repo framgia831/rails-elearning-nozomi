@@ -1,0 +1,46 @@
+<div class="container main">
+	<div class="row">
+		<div class="col-md-8 mt-3 mb-3">
+	        <h2><strong>Admin: Members List</strong></h2>
+	    </div>
+	    <div class="col-md-4 mt-4 mb-3">
+        	<h5 class="pull-right"><%= link_to users_path do%>Change User's Members List <i class="fa fa-arrow-circle-o-right"></i><% end %></h5>
+        </div>
+    </div>
+	<div class="row">
+		<div class="col-md-12 center-block">
+    		<table class="table table-striped table-responsive mb-5">
+		    	<thead>
+		    		<th class="name">Name</th>
+		    		<th>Biography</th>
+					<th>Department</th>
+					<th style="width: 50px;">Admin</th>
+		    	</thead>
+				<% @users.each do |user| %>
+			    	<tbody>
+			    		<td style="width: 0;">
+							<div class="media">
+								<div class="img m-2">
+			    					<%= image_tag user.image.url, id: :img_prev2%>
+			                	</div>
+							<div class="media-body m-2">
+			    			<h5><%= link_to user.name, user_url(user) %></h5></div></td>
+			    		<td class="biography"><h5><%= user.biography %></h5></td>
+						<td><h5><%= user.department %></h5></td>
+						<td style="width: 50px;">
+							<% if user == User.first %>
+								<small class="text-info"><i class="fa fa-key ml-2 "></i></small>
+							<% elsif user.admin == true %>
+								<%= link_to admin_user_path(user), class: "btn btn-outline-info pr-4", method: :patch do %><i class="fa fa-key"></i>Active<% end %>
+							<% else %>
+								<%= link_to admin_user_path(user), class: "btn btn-outline-dark", method: :patch do%>
+								<i class="fa fa-key text-muted"></i>Deactive<% end %>
+							<% end %>
+						</td>			
+			    	</tbody>
+		    	<% end %>
+			</table>
+		<div class="pagenate"><%= will_paginate @lesson_answers%></div>
+		</div>
+	</div>
+</div>

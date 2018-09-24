@@ -3,6 +3,8 @@ class Category < ApplicationRecord
 					  uniqueness: true
 	validates :description, presence: true,
 							length: { maximum: 200 }
+	validates :difficulty, presence: true
+	
 	default_scope {order(created_at: :desc)}
 
 	has_many :words, dependent: :destroy

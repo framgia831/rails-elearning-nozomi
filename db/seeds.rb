@@ -55,19 +55,23 @@ end
 categories = [
 {
       title: "Basic noun 10: French", 
-      description: "This is test category. 10 basic words are registered in this category. Please try this at first."
+      description: "This is test category. 10 basic words are registered in this category. Please try this at first.",
+      difficulty: "0"
 },
 {
       title: "Basic noun 10: Japanese", 
-      description: "This is test category. 10 basic words are registered in this category. Please try this at first."
+      description: "This is test category. 10 basic words are registered in this category. Please try this at first.",
+      difficulty: "0"
 },
 {
       title: "Advanced noun 30", 
-      description: "This is test category. 30 words advanced words are registered in this category. Please try this after the bacical categories."
+      description: "This is test category. 30 words advanced words are registered in this category. Please try this after the bacical categories.",
+      difficulty: "0"
 },
 {
       title: "Advanced verb 60", 
-      description: "This is test category. 60 words advanced words are registered in this category. Please try this after the bacical categories."
+      description: "This is test category. 60 words advanced words are registered in this category. Please try this after the bacical categories.",
+      difficulty: "0"
 }
 ]
 

@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
 		@category = Category.find(params[:category_id])
 		@lesson = Lesson.find(params[:lesson_id])
 		@lesson_answers = @lesson.answers.paginate(page: params[:page], per_page: 7)
-		@words = @category.words.all
+		@words = @category.words
 		@correct_answers = Choice.where(judge: true).paginate(page: params[:page], per_page: 7)
 		@correct_answers_sum = Choice.where(judge: true)
 

@@ -49,7 +49,7 @@ class Admin::CategoriesController < ApplicationController
 	private
 
 	def category_params
-    	params.require(:category).permit(:title, :description, :importance)
+    	params.require(:category).permit(:title, :description, :difficulty)
  	end
  
     def administrator

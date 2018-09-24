@@ -1,18 +1,14 @@
-<div class="container-fluid main">
+<div class="container main">
 	<div class="row">
-		<div class="col-md-1 center-block"></div>
-		<div class="col-md-4 center-block">
-            <h2><strong>Profile</strong></h2>
+		<div class="col-md-5 mt-3">
+            <h2><strong>Edit Profile</strong></h2>
             <hr>
-        </div>
-		<div class="col-md-8 center-block">
         </div>
     </div>
 
 	<%= form_for @user, url: user_path(@user.id) do |f| %>
 	<div class="row">
-		<div class="col-md-1 center-block"></div>
-		<div class="col-md-4 center-block">
+		<div class="col-md-5 center-block">
 			<% if @user.errors.any? %>
                 <div class="alert alert-danger">
                     <ul class="m-0">
@@ -42,10 +38,10 @@
 			    <%= f.text_field :department, class: 'form-control' %>
         </div>
 
-		<div class="col-md-2 center-block"></div>
+		<div class="col-md-1 center-block"></div>
 
 
-		<div class="col-md-4 center-block">
+		<div class="col-md-5 center-block">
  				<%= f.label :image %><br>
    				<%= f.file_field :image, id: :user_image %>
    				<p><%= f.check_box :remove_image %>Delete image</p>
@@ -74,7 +70,7 @@
 				</script>
 
 
-				<div class="update-btn">
+				<div class="update-btn mt-5">
 			  		<div class="row">
 						<div class="col-md-6 center-block"></div>			  							
 						<div class="col-md-3 center-block">

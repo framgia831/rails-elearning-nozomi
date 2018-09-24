@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 	before_action :require_login, only: [:index]
 
 	def index
-		@categories = Category.paginate(page: params[:page], per_page: 3)
+		@categories = Category.paginate(page: params[:page], per_page: 6)
 		@lesson = current_user.lessons
 	end
 

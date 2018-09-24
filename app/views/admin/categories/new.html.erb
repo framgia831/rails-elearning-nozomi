@@ -1,54 +1,9 @@
-<div class="container-fluid main">
+<div class="container main">
 	<div class="row">
-		<div class="col-md-1 center-block"></div>
-		<div class="col-md-4 center-block">
-            <h2><strong>Category: Admin</strong></h2>
+		<div class="col-md-5 mt-3">
+            <h2><strong>New Category: Admin</strong></h2>
             <hr>
         </div>
-		<div class="col-md-8 center-block">
-        </div>
     </div>
-
-	<%= form_for [:admin, @category] do |f| %>
-	<div class="row">
-		<div class="col-md-1 center-block"></div>
-		<div class="col-md-4 center-block">
-			<% if @category.errors.any? %>
-                <div class="alert alert-danger">
-                    <ul class="m-0">
-                        <% @category.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
-
-				<%= f.label :title %>
-			    <%= f.text_field :title, class: 'form-control' %>
-
-			    <%= f.label :description %>
-			    <%= f.text_area  :description, class: 'form-control' %>
-
-        </div>
-
-		<div class="col-md-2 center-block"></div>
-		<div class="col-md-4 center-block">
-
-
-				<div class="update-btn">
-			  		<div class="row">
-						<div class="col-md-6 center-block"></div>			  							
-						<div class="col-md-3 center-block">
-							<div style="height: 200px;"></div>
-							<%= f.submit "Save", class: "btn btn-outline-primary btn-lg" %>
-							</div>
-					<% end %>
-						<div class="col-md-3 center-block">
-							<div style="height: 200px;"></div>
-							<%= button_to "Cancel", admin_categories_path, method: :get, class: "btn btn-outline-warning btn-lg" %>
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>
+	<%= render partial: "form" %>
 </div>

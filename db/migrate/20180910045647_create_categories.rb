@@ -3,7 +3,7 @@ class CreateCategories < ActiveRecord::Migration[5.2]
     create_table :categories do |t|
       t.string :title
       t.text :description
-      t.integer :importance
+      t.integer :difficulty, default: 0
 
       t.timestamps
     end
