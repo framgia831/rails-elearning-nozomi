@@ -22,15 +22,11 @@
 
   <body>
   <header>
-    <div class="container-fluid">
-      <div class=row>
         <% if current_user %>
           <%= render "layouts/navigation" %>
         <% else%>
           <%= render "layouts/login" %>
         <% end %>
-      </div>
-      </div>
   </header>
 
   <div class="body">
@@ -40,11 +36,12 @@
 
     <%= debug session[:user_id] %>
 
+    </div>
   </div>
 
-  <footer id="footer">
-    <p class="text-right mr-3 mt-3">Copyright -. All Rights Reserved.</p>
-  </footer>
+    <footer id="footer">
+      <p class="text-right mr-3 mt-3">Copyright -. All Rights Reserved.</p>
+    </footer>
   
   </body>
 </html>

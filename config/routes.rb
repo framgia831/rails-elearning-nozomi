@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 	end
 
 	namespace 'admin' do
-	  	resources :categories do
+	  	resources :categories, :users do
 	  		resources :words do
 	  			resources :choices
 			end
