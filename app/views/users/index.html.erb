@@ -4,7 +4,9 @@
             <h2><strong>Users List</strong></h2>
         </div>
 	    <div class="col-md-4 mt-4 mb-3">
+	    	<% if current_user.admin? %>
         	<h5 class="pull-right"><i class="fa fa-arrow-circle-o-left"></i><%= link_to admin_users_path do%>Change Admin's Members List<% end %></h5>
+        	<% end %>
         </div>
     </div>
 	<div class="row">

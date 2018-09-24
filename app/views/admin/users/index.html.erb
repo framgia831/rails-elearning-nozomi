@@ -14,7 +14,7 @@
 		    		<th class="name">Name</th>
 		    		<th>Biography</th>
 					<th>Department</th>
-					<th style="width: 50px;">Admin</th>
+					<th>Admin / Grant Auth.</th>
 		    	</thead>
 				<% @users.each do |user| %>
 			    	<tbody>
@@ -23,18 +23,22 @@
 								<div class="img m-2">
 			    					<%= image_tag user.image.url, id: :img_prev2%>
 			                	</div>
-							<div class="media-body m-2">
-			    			<h5><%= link_to user.name, user_url(user) %></h5></div></td>
+								<div class="media-body m-2">
+				    				<h5><%= link_to user.name, user_url(user) %></h5>
+				    			</div>
+			    			</div>
+			    		</td>
 			    		<td class="biography"><h5><%= user.biography %></h5></td>
 						<td><h5><%= user.department %></h5></td>
-						<td style="width: 50px;">
+						<td>
 							<% if user == User.first %>
-								<small class="text-info"><i class="fa fa-key ml-2 "></i></small>
-							<% elsif user.admin == true %>
-								<%= link_to admin_user_path(user), class: "btn btn-outline-info", method: :patch do %><i class="fa fa-key"></i>Deactivate<% end %>
+								<small><i class="fa fa-key ml-2"></i></small>
+							<% elsif user.admin? %>
+								<small><i class="fa fa-key ml-2 mr-5"></i>
+								<%= link_to "Deactivate", admin_user_path(user), class: "btn btn-outline-dark", method: :patch %></small>
 							<% else %>
-								<%= link_to admin_user_path(user), class: "btn btn-outline-dark pr-4", method: :patch do%>
-								<i class="fa fa-key text-muted"></i>Activate<% end %>
+								<small><i class="fa fa-key ml-2 mr-5 text-muted"></i>
+								<%= link_to "Activate", admin_user_path(user), class: "btn btn-outline-info", method: :patch%></small>
 							<% end %>
 						</td>			
 			    	</tbody>
