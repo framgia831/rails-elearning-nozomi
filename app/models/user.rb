@@ -59,11 +59,11 @@ class User < ApplicationRecord
 			followed_id: other_user.id)
 	end
 
-	def super_admin
+	def super_admin?
 		authority == User::ROLE_SUPER_ADMIN
 	end
 
-	def admin
+	def admin?
 		authority == User::ROLE_ADMIN
 	end
 	

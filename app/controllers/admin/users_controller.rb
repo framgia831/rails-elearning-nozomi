@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
 	private
  
     def administrator
-		if current_user.authority.nil?
+		unless current_user.authority?
 			redirect_to users_path
 		end
     end

@@ -11,14 +11,14 @@ User.create(name: "Nozomi Matsuoka",
                   password: 'nozomi',
                   biography: "Hello. I'm an administrator of this system :) If you have any questions, please contact me. --> 000-0000-0000",
                   department: "Trans Dept.",
-                  authority: 1)
+                  authority: User::ROLE_SUPER_ADMIN)
 
 User.create(name: "ai", 
                   email: 'ai@example.com',
                   password: 'ai',
                   biography: "Hi ! I am a planner of this system. If you have any confusion, please feel free to contact me.",
                   department: "Development Dept.",
-                  authority: 2)
+                  authority: User::ROLE_ADMIN)
 
 User.create(name: "Cherry Nicavera", 
                   email: 'cherry@example.com',
