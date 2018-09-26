@@ -22,6 +22,7 @@ class User < ApplicationRecord
 	has_many :lessons
 	has_many :answers, through: :lessons
 	has_many :words, through: :answers
+	belongs_to :authority
 
 	mount_uploader :image, ImageUploader
 

@@ -1,9 +1,9 @@
-<div class="container main">
+<div class="container main mt-5">
 	<div class="row">
 		<div class="col-md-4 mt-3">
 			<div class="row">
-				<div class="col-md-9 center-block">
-            		<h2><strong>Dashboard</strong></h2>
+				<div class="col-md-9">
+            		<h1><strong>Dashboard</strong></h1>
             	</div>
 			</div>
             <hr>
@@ -12,10 +12,10 @@
             		<%= image_tag current_user.image.url, id: :img_tumb2%>
             	</div>
 				<div class="media-body m-2">
-            		<h4><strong><%= link_to current_user.name, user_url(current_user) %></strong></h4>
-					<h5>@<%= current_user.department %></h5><hr>
-					<h4><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h4>
-					<h5>(in <%= current_user.lessons.count %> Categories)</h5>
+            		<h2><strong><%= link_to current_user.name, user_url(current_user) %></strong></h2>
+					<h4>@<%= current_user.department %></h4><hr>
+					<h3><%= link_to "#{current_user.answers.count} Words Learned", progress_path %></h3>
+					<h4>(in <%= current_user.lessons.count %> Categories)</h4>
 				</div>
 			</div>
 			<hr>
@@ -26,9 +26,13 @@
         <div class="col-md-1"></div>
 		<div class="col-md-7 mb-5">
 			<div class="container balloon1-left">
-				<h3 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h3>
+				<h2 class="mt-2"><i class="fa fa-book"></i><strong>Recent Activity</strong></h2>
 				<hr>
+				<% if @activities.any? %>
 					<%= render @activities %>
+				<% else %>
+					<h2 class="ml-5">No activity. </h2>
+				<% end %>
 				</div>
 			</div>
 		</div>

@@ -1,14 +1,14 @@
-<div class="container main">
+<div class="container main mt-5">
 	<div class="row">
 		<div class="col-md-5 mt-3">
-            <h2><strong>Edit Profile</strong></h2>
+            <h1><strong>Edit Profile</strong></h1>
             <hr>
         </div>
     </div>
 
 	<%= form_for @user, url: user_path(@user.id) do |f| %>
 	<div class="row">
-		<div class="col-md-5 center-block">
+		<div class="col-md-5">
 			<% if @user.errors.any? %>
                 <div class="alert alert-danger">
                     <ul class="m-0">
@@ -42,46 +42,39 @@
 
 
 		<div class="col-md-5 center-block">
- 				<%= f.label :image %><br>
-   				<%= f.file_field :image, id: :user_image %>
-   				<p><%= f.check_box :remove_image %>Delete image</p>
-   				<% if @user.image? %>
-   				<%= image_tag @user.image.url, id: :img_prev %>
-   				<% else %>
-   				<%= image_tag @user.image.url, id: :img_prev%>
-   				<% end %>
-   				<%#= image_tag @user.image.url, id: :img_prev if @user.image? else default_url %>
+			<%= f.label :image %><br>
+			<%= f.file_field :image, id: :user_image %>
+			<p><%= f.check_box :remove_image %> Delete image</p>
+			<% if @user.image? %>
+			<%= image_tag @user.image.url, id: :img_prev %>
+			<% else %>
+			<%= image_tag @user.image.url, id: :img_prev%>
+			<% end %>
 
-   				<script type="text/javascript">
-				$(function() {
-				 function readURL(input) {
-				   if (input.files && input.files[0]) {
-				     var reader = new FileReader();
-				     reader.onload = function (e) {
-				       $('#img_prev').attr('src', e.target.result);
-				     }
-				     reader.readAsDataURL(input.files[0]);
-				   }
-				 }
-				 $("#user_image").change(function(){
-				   readURL(this);
-				 });
-				});
-				</script>
+			<script type="text/javascript">
+			$(function() {
+			 function readURL(input) {
+			   if (input.files && input.files[0]) {
+			     var reader = new FileReader();
+			     reader.onload = function (e) {
+			       $('#img_prev').attr('src', e.target.result);
+			     }
+			     reader.readAsDataURL(input.files[0]);
+			   }
+			 }
+			 $("#user_image").change(function(){
+			   readURL(this);
+			 });
+			});
+			</script>
 
-
-				<div class="update-btn mt-5">
-			  		<div class="row">
-						<div class="col-md-6 center-block"></div>			  							
-						<div class="col-md-3 center-block">
-							<%= f.submit "Update", class: "btn btn-outline-primary btn-lg" %>
-						</div>
-					<% end %>
-						<div class="col-md-3 center-block">
-							<%= button_to "Cancel", user_path, method: :get, class: "btn btn-outline-warning btn-lg" %>
-						</div>
-				</div>
+		<div class="update-btn mt-5 mb-5">
+			<div class="btn-group pull-right mb-5">
+				<%= f.submit "Update", class: "btn btn-outline-primary btn-lg mr-3 mb-5" %>
+				<% end %>
+				<%= button_to "Cancel", user_path, method: :get, class: "btn btn-outline-warning btn-lg mr-5 mb-5" %>
 			</div>
+		</div>
 		</div>
 	</div>
 </div>

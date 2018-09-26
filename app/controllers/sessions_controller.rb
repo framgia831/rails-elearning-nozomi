@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 	end
 
 	def index
-		@words = current_user.words.paginate(page: params[:page], per_page: 8)
+		@words = current_user.words.paginate(page: params[:page], per_page: 10)
 	end
 
 	def destroy

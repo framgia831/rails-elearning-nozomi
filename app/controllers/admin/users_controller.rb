@@ -8,14 +8,14 @@ class Admin::UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		@user.admin = true
+		@user.authority_id = 2
 		@user.save
 		redirect_to admin_users_path
 	end
 
 	def destroy
 		@user = User.find(params[:id])
-		@user.admin = false
+		@user.authority_id = 3
 		@user.save
 		redirect_to admin_users_path
 	end
@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
 	private
  
     def administrator
-		unless current_user.admin?
+		if current_user.authority_id == 3
 			redirect_to users_path
 		end
     end

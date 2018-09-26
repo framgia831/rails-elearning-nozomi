@@ -1,21 +1,21 @@
 <div class="container main">
 	<div class="row">
-		<div class="col-md-5 mt-3">
-            <h2>ARE YOU READY TO <br><strong>MAKE IT AWESOME</strong> WITH US ?</h2>
+		<div class="col-md-5" style="margin-top:-40px;">
+            <h1>ARE YOU READY TO <br><strong>MAKE IT AWESOME</strong> WITH US ?</h1>
             <hr>
             <div class="top-image">
-            <%=image_tag "top-image2.jpg" %>
+            <%=image_tag "top-image2.jpg", :size => "380x380" %>
         	</div>
 
 		</div>
 		<div class="col-md-2 center-block"></div>
-		<div class="col-md-5 float-left mb-5">
+		<div class="col-md-5 float-left">
 	        <% if login_error = flash[:login] %>
 			    <div class="alert alert-danger">
 			        <%= login_error %>      
 			    </div>
 	    	<% end %>
-			<h2>Create new account</h2>
+			<h1><strong>Create new account</strong></h1>
 
        		<%= form_for @user, url: signup_path do |f| %>
 	            <% if @user.errors.any? %>
@@ -38,7 +38,7 @@
         	<div class="col-md-12 float-left">
 				<div class="form-group">
 					<%= f.label :name %>
-					<%= f.text_field :name, class: "form-control" %>
+					<%= f.text_field :name, :size => "40", class: "form-control" %>
 				</div>
 				<div class="form-group">
 					<%= f.label :email %>
@@ -59,9 +59,10 @@
 					<%= f.label :department %>
 					<%= f.text_field :department, class: "form-control" %>
 				</div>
+					<%= f.hidden_field :authority, :value => 3 %>
 
 				<%= f.submit "Sign-in", 
-				class: "btn btn-primary form-control" %>
+				class: "btn btn-primary btn-lg pl-5 pr-5" %>
 				<% end %>
 			</div>
 		</div>

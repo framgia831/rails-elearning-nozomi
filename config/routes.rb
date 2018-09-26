@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
 	post "/users/:id/edit", to: "users#edit"
 	get "/index", to: "users#index"
+
+	post "/index_relationships", to: "relationships#index_create"
+	delete "/index_relationships", to: "relationships#index_destroy"
  
 	resources :users, except: :new do
 	  member do
@@ -26,8 +29,7 @@ Rails.application.routes.draw do
 		end
 	end
 
-	resources :relationships, only: [:create, :destroy]
-	resources :relationships, only: [:create, :destroy]
+	resources :relationships, only: [:create, :destroy, :index]
 
 	resources :categories, only: [:index] do
 		resources :lessons do

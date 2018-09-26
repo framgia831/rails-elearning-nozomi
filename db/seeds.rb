@@ -6,31 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Authority.create(role: "Super Admin")
+Authority.create(role: "Admin")
+Authority.create(role: "User")
+
 User.create(name: "Nozomi Matsuoka", 
-                  admin: "1",
                   email: 'n.matsuoka@gmail.com',
                   password: 'nozomi',
                   biography: "Hello. I'm an administrator of this system :) If you have any questions, please contact me. --> 000-0000-0000",
-                  department: "Trans Dept.")
+                  department: "Trans Dept.",
+                  authority_id: 1)
 
 User.create(name: "ai", 
-                  admin: "0",
                   email: 'ai@example.com',
                   password: 'ai',
                   biography: "Hi ! I am a planner of this system. If you have any confusion, please feel free to contact me.",
-                  department: "Development Dept.")
+                  department: "Development Dept.",
+                  authority_id: 2)
 
 User.create(name: "Cherry Nicavera", 
-                  admin: "0",
                   email: 'cherry@example.com',
                   password: 'cherry',
-                  department: "English Dept.")
+                  department: "English Dept.",
+                  authority_id: 3)
 
 User.create(name: "Rhona Marie Alimpolos", 
-                  admin: "0",
                   email: 'rhona@example.com',
                   password: 'rhona',
-                  department: "English Dept.")
+                  department: "English Dept.",
+                  authority_id: 3)
 
 30.times do |n|
   name  = Faker::Name.name
@@ -38,10 +42,10 @@ User.create(name: "Rhona Marie Alimpolos",
   password = "password"
   User.create!(name:  name,
                email: email,
-               admin: "0",
                password:              password,
                password_confirmation: password,
-               department: "QA Dept.")
+               department: "QA Dept.",
+               authority_id: 3)
 end
 
 #   20.times do |t|

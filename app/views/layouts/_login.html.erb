@@ -2,29 +2,29 @@
    style="background: url(<%= asset_path "top-image1.jpg" %>); background-size:cover;">
 
       <div class="row">
-        <div class="col-md-7 pl-5">
+        <div class="col-md-6">
           <%= link_to "Framgia E-Learning", root_path, class: "logo" %>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 mt-5">
           <%= form_for :session, url: login_path do |f| %>
-              <table class="ml-5">
+              <table class="ml-5 pull-right login">
                   <tr>
                       <td>
                         <div class="form-group">
                          <%= f.label :email %>
-                         <%= f.email_field :email, class: "form-control" %>
+                         <%= f.email_field :email, class: "form-control pr-5" %>
                         </div>
                       </td>
                                       
                       <td>
                         <div class="form-group">
                           <%= f.label :password %>
-                          <%= f.password_field :password, class: "form-control" %>
+                          <%= f.password_field :password, class: "form-control pr-5" %>
                         </div>                              
                       </td>
 
-                      <td class="login">
-                          <%= f.submit "Login", class: "btn btn-success" %>
+                      <td>
+                          <%= f.submit "Login", class: "btn btn-success mt-4 btn-lg" %>
                       </td>
                   </tr>
                   <tr>

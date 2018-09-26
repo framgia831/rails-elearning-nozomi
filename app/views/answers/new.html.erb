@@ -1,33 +1,32 @@
-<div class="container main">
+<div class="container main mt-5">
 	<div class="row">
 		<div class="col-md-12 mt-3">
 			<div class="row">
-				<div class="col-md-10 center-block">
-            		<h2><strong>Lesson: <%= @category.title %></strong></h2>
-            	<hr>
+				<div class="col-md-10">
+            		<h1><strong>Lesson: <%= @category.title %></strong></h1>
             	</div>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-10 center-block bg-light" style="height:450px; width: 500px;">
-                <h3 class="pt-5 pl-5"><strong>No. <%= @progress %></strong> of <%= @words.count %></h3>
-                <div class="row">
-                    <div class="col-md-2 center-block"></div>
-                    <div class="col-md-3 align-items-center" id="word_panel">
+        <div class="row ml-5 mb-5">
+            <div class="col-md-10 bg-light" style="height:450px; width: 500px;">
+                <h2 class="pt-5 pl-5"><strong>No. <%= @progress %></strong> of <%= @words.count %></h2>
+                <div class="row ml-5 mr-5">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 ml-5 mr-5" id="word_panel">
                         <div class="text-center">
                         <h1><strong><%= @word.content %></strong></h1>
                         </div>
                     </div>
-                    <div class="col-md-1 center-block"></div>
-                    <div class="col-md-4 center-block">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4 mt-5 ml-5">
                         <h3><strong>Choices</strong></h3>
                         <% @word.choices.each do |choice| %>
                             <%= button_to choice.content, category_lesson_answers_path, 
                             params:{choice_id: choice.id, word_id: @word.id},
-                            class: "btn btn-outline-warning btn-lg btn-block mb-2 ml-4" %>
+                            class: "btn btn-outline-warning btn-lg btn-block mb-4 ml-4" %>
                         <% end %>
                     </div>
                 </div>

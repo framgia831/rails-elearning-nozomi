@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :image
       t.text :biography
       t.string :department
-      t.boolean :admin
+      t.references :authority, foreign_key: true, default: 3
 
       t.timestamps
     end
