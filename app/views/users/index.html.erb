@@ -4,7 +4,7 @@
             <h1><strong>Users List</strong></h1>
         </div>
 	    <div class="col-md-4">
-	    	<% if current_user.authority_id != 3 %>
+	    	<% if current_user.authority %>
         	<h3 class="pull-right mt-3 mr-4"><i class="fa fa-arrow-circle-o-left"></i><%= link_to admin_users_path do%>Change Admin's Members List<% end %></h3>
         	<% end %>
         </div>
@@ -33,10 +33,10 @@
 							<% if  current_user != user %>
 								<% if current_user.following?(user) %>
 									<small><i class="far fa-handshake ml-4 mr-5 mt-2 text-info pull-left"></i>
-										<%= link_to "Unfollow", index_relationships_path(id: user.id), method: :delete, class: "btn btn-outline-dark pull-left" %></small>
+										<%= link_to "Unfollow", current_user.relationship(user), method: :delete, class: "btn btn-outline-dark pull-left" %></small>
 								<% else %>
 									<small><i class="far fa-handshake ml-4 mr-5 mt-2 text-mute pull-left"></i>
-										<%= link_to "Follow", index_relationships_path(followed_id: user.id), method: :post, class: "btn btn-outline-info pull-left" %></small>
+										<%= link_to "Follow", relationships_path(followed_id: user.id), method: :post, class: "btn btn-outline-info pull-left" %></small>
 								<% end %>
 							<% end %>
 						</td>		  		

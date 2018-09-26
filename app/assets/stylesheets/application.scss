@@ -91,14 +91,6 @@
         object-fit: cover;
     }
 
-    .logo-small {
-        font-size: 30px;
-        padding-left: 70px;
-        color: #FFF;
-        font-family: 'Berkshire Swash', cursive;
-        text-decoration: none;        
-    }
-
     .nav-item {
         font-size: 15px;
         text-align: right;
@@ -286,6 +278,13 @@
         width:100%;
         z-index:4;
     }
+        .navbar-brand.logo-small {
+            font-size: 30px;
+            padding-left: 70px;
+            color: #FFF;
+            font-family: 'Berkshire Swash', cursive;
+            text-decoration: none;        
+        }
 
     .header-large {
         padding: -70px 0;
@@ -331,9 +330,4 @@
         font-size: 15px!important;
         padding-left: 14px!important;
         padding-right: 14px!important;        
-    }
-
-   .btn-primary, .btn-warning {
-        font-size: 18px!important;
-        padding: 10px 14px!important;        
     }

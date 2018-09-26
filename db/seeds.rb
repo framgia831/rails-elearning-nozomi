@@ -6,35 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Authority.create(role: "Super Admin")
-Authority.create(role: "Admin")
-Authority.create(role: "User")
-
 User.create(name: "Nozomi Matsuoka", 
                   email: 'n.matsuoka@gmail.com',
                   password: 'nozomi',
                   biography: "Hello. I'm an administrator of this system :) If you have any questions, please contact me. --> 000-0000-0000",
                   department: "Trans Dept.",
-                  authority_id: 1)
+                  authority: 1)
 
 User.create(name: "ai", 
                   email: 'ai@example.com',
                   password: 'ai',
                   biography: "Hi ! I am a planner of this system. If you have any confusion, please feel free to contact me.",
                   department: "Development Dept.",
-                  authority_id: 2)
+                  authority: 2)
 
 User.create(name: "Cherry Nicavera", 
                   email: 'cherry@example.com',
                   password: 'cherry',
-                  department: "English Dept.",
-                  authority_id: 3)
+                  department: "English Dept.")
 
 User.create(name: "Rhona Marie Alimpolos", 
                   email: 'rhona@example.com',
                   password: 'rhona',
-                  department: "English Dept.",
-                  authority_id: 3)
+                  department: "English Dept.")
 
 30.times do |n|
   name  = Faker::Name.name
@@ -44,8 +38,7 @@ User.create(name: "Rhona Marie Alimpolos",
                email: email,
                password:              password,
                password_confirmation: password,
-               department: "QA Dept.",
-               authority_id: 3)
+               department: "QA Dept.")
 end
 
 #   20.times do |t|
