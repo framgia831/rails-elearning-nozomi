@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_020321) do
     t.string "image"
     t.text "biography"
     t.string "department"
-    t.boolean "admin"
+    t.integer "authority", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

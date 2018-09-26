@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+
+	ROLE_SUPER_ADMIN = 1
+	ROLE_ADMIN       = 2
+
 	validates :name, presence: true
 
 	EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -53,6 +57,14 @@ class User < ApplicationRecord
 		Relationship.find_by(
 			follower_id: id,
 			followed_id: other_user.id)
+	end
+
+	def super_admin?
+		authority == User::ROLE_SUPER_ADMIN
+	end
+
+	def admin?
+		authority == User::ROLE_ADMIN
 	end
 	
 end

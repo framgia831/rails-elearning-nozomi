@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :image
       t.text :biography
       t.string :department
-      t.boolean :admin
+      t.integer :authority, limit: 2
 
       t.timestamps
     end

@@ -53,7 +53,7 @@ class Admin::CategoriesController < ApplicationController
  	end
  
     def administrator
-		unless current_user.admin?
+		unless current_user.authority?
 			redirect_to root_url
 		end
     end

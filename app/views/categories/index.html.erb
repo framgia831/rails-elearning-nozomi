@@ -1,48 +1,55 @@
-<div class="container main">
+<div class="container main mt-5">
 	<div class="row">
 		<div class="col-md-12 mt-3">
-            		<h2><strong>Lessons</strong></h2>
+            <h1><strong>Lessons</strong></h1>
 
-		<div class="container">
-			<div class="row">			
-				<% @categories.each do |category| %>
+			<div class="container mt-3 mb-5">
+				<div class="row">
+				<% if @categories.empty? %>
+				    <div class="alert alert-info ml-4 mt-2">
+						<h2>Lesson has not been registered yet. </h2>
+					</div>
+				<% else %>
+					<% @categories.each do |category| %>
 
-				<div class="col-md-4 mb-3 mt-3">
-					<div class="<%= category.words.any? ? "lesson-box" : "lesson-box-prep" %>">
-			   			<h4><strong><%= category.title %></strong></h4>
-			   			<p>[Difficulty: 
-				    	<span class='star-rating' data-score="<%= category.difficulty %>"></span>]</p><hr>
+					<div class="col-md-4 mb-3 mt-3">
+						<div class="<%= category.words.any? ? "lesson-box" : "lesson-box-prep" %>">
+				   			<h2><strong><%= category.title %></strong></h2>
+				   			<p>[Difficulty: 
+					    	<span class='star-rating' data-score="<%= category.difficulty %>"></span>]</p><hr>
 
-				    		<script>
-							$('.star-rating').raty({
-								readOnly: true,
-								path: '/assets/',
-								click: function(score, e) {
-								$("#difficulty_rating").val(score)
-								}
-							});
-							</script>
-					    <h5 class="mb-3"><%= category.description %></h5>
+					    		<script>
+								$('.star-rating').raty({
+									readOnly: true,
+									path: '/assets/',
+									click: function(score, e) {
+									$("#difficulty_rating").val(score)
+									}
+								});
+								</script>
+						    <h3 class="mb-5"><%= category.description %></h3>
 
-						<div class="text-center">
-						    <% if category.words.empty? %>
-							    <h3><strong>Comming Soon !</strong></h3>
-						    <% elsif @lesson.pluck(:category_id).any?(category.id) %>
-								<% @lesson_test = @lesson.find_by(category_id: category.id) %>
-							    	<%= link_to "Review Words", category_lesson_answers_path(category_id: category.id, lesson_id: @lesson_test.id), class: "btn btn-warning btn-lg" %>
-						    <% else %>
-						    	<%= link_to "Let's Start !",  category_lessons_path(category_id: category.id), method: :post, class: "btn btn-primary btn-lg" %>
-						    <% end %>
+							<div class="text-center pt-4">
+							    <% if category.words.empty? %>
+								    <h2><strong>Comming Soon !</strong></h2>
+							    <% elsif @lesson.pluck(:category_id).any?(category.id) %>
+									<% @lesson_test = @lesson.find_by(category_id: category.id) %>
+								    <%= link_to "Review Words", category_lesson_answers_path(category_id: category.id, lesson_id: @lesson_test.id), class: "btn btn-warning btn-lg" %>
+							    <% else %>
+							    	<%= link_to "Let's Start !",  category_lessons_path(category_id: category.id), method: :post, class: "btn btn-primary btn-lg" %>
+							    <% end %>
+							</div>
 						</div>
 					</div>
-				</div>
-			<% end %>
+				<% end %>
+				<% end %>
+			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-md-5 center-block mt-3">
-			<div class="pagenate mb-5"><%= will_paginate %></div>
+		<div class="row">
+			<div class="col-md-5 center-block mt-3">
+				<%= will_paginate @categories, renderer: BootstrapPagination::Rails, class: 'pagination-sm' %>
+			</div>
 		</div>
 	</div>
 </div>
