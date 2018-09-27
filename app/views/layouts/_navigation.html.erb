@@ -4,28 +4,28 @@
         <%= link_to "Framgia E-Learning", root_path, class: "navbar-brand logo-small" %> 
         <ul class="navbar-nav ml-auto mr-4">
             <% if current_user.authority? %>
-                <li class="nav-item">
-                    <%= link_to "Admin", admin_categories_path, class: "nav-link" %>
+                <li class="nav-item guide">
+                    <%= link_to "Admin", admin_categories_path, class: "nav-link guide-link" %>
                 </li>
             <% end %>
-                <li class="nav-item">
+                <li class="nav-item guide">
             <% if current_user.authority? %>
-                <%= link_to "Members", admin_users_path, class: "nav-link" %> 
+                <%= link_to "Members", admin_users_path, class: "nav-link guide-link" %> 
             <% else %>               
-                <%= link_to "Users", index_path, class: "nav-link" %>
+                <%= link_to "Users", index_path, class: "nav-link guide-link" %>
             <% end %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "Lessons", categories_path, class: "nav-link" %>
+                <li class="nav-item guide">
+                    <%= link_to "Lessons", categories_path, class: "nav-link guide-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+                <li class="nav-item guide">
+                    <%= link_to "Dashboard", dashboard_path, class: "nav-link guide-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+                <li class="nav-item guide">
+                    <%= link_to "Profile", user_path(current_user), class: "nav-link guide-link" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "Logout", login_path, class: "nav-link", method: :delete %>
+                <li class="nav-item guide">
+                    <%= link_to "Logout", login_path, class: "nav-link guide-link", method: :delete %>
                 </li>
         </ul>
     </nav>

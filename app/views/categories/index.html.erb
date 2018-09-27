@@ -1,13 +1,31 @@
 <div class="container main mt-5">
 	<div class="row">
 		<div class="col-md-12 mt-3">
-            <h1><strong>Lessons</strong></h1>
+            <h1><strong>Lessons (<%= @categories.count %>)</strong></h1>
 
 			<div class="container mt-3 mb-5">
+				<ul class="nav nav-tabs">
+				  <li class="nav-item">
+				  	<%= link_to "All", categories_path, class: "nav-link #{status_active(nil, @status)}" %>		
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Learned", categories_path(status: :learned), 
+				  	     class: "nav-link #{status_active(:learned, @status)}"%>		
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Not Learned", categories_path(status: :unlearned), 
+				  	     class: "nav-link #{status_active(:unlearned, @status)}" %>		
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Getting Ready", categories_path(status: :pending),  
+				  	     class: "nav-link #{status_active(:pending, @status)}" %>	
+				  </li>
+				</ul>
+
 				<div class="row">
 				<% if @categories.empty? %>
 				    <div class="alert alert-info ml-4 mt-2">
-						<h2>Lesson has not been registered yet. </h2>
+						<h2>No Lessons.</h2>
 					</div>
 				<% else %>
 					<% @categories.each do |category| %>
@@ -29,14 +47,14 @@
 								</script>
 						    <h3 class="mb-5"><%= category.description %></h3>
 
-							<div class="text-center pt-4">
+							<div class="text-center">
 							    <% if category.words.empty? %>
 								    <h2><strong>Comming Soon !</strong></h2>
-							    <% elsif @lesson.pluck(:category_id).any?(category.id) %>
-									<% @lesson_test = @lesson.find_by(category_id: category.id) %>
-								    <%= link_to "Review Words", category_lesson_answers_path(category_id: category.id, lesson_id: @lesson_test.id), class: "btn btn-warning btn-lg" %>
+							    <% elsif @lessons.pluck(:category_id).any?(category.id) %>
+									<% @lesson_test = @lessons.find_by(category_id: category.id) %>
+								    <%= link_to "Review Words", category_lesson_answers_path(category_id: category.id, lesson_id: @lesson_test.id), class: "btn btn-warning mt-4 btn-lg" %>
 							    <% else %>
-							    	<%= link_to "Let's Start !",  category_lessons_path(category_id: category.id), method: :post, class: "btn btn-primary btn-lg" %>
+							    	<%= link_to "Let's Start !",  category_lessons_path(category_id: category.id), method: :post, class: "btn btn-primary mt-4 btn-lg" %>
 							    <% end %>
 							</div>
 						</div>
@@ -47,7 +65,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-5 center-block mt-3">
+			<div class="col-md-5 center-block mt-3 mb-5">
 				<%= will_paginate @categories, renderer: BootstrapPagination::Rails, class: 'pagination-sm' %>
 			</div>
 		</div>
