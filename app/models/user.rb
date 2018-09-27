@@ -24,6 +24,8 @@ class User < ApplicationRecord
 	has_many :following, through: :active_relationships,  source: :followed
 	has_many :followers, through: :passive_relationships, source: :follower
 	has_many :lessons
+
+	has_many :categories, through: :lessons, source: :category
 	has_many :answers, through: :lessons
 	has_many :words, through: :answers
 

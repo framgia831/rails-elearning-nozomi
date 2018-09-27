@@ -2,37 +2,18 @@ class CategoriesController < ApplicationController
 	before_action :require_login, only: [:index]
 
 	def index
-
-		@categories = Category.all
-
-		@ready = [nil]
-		@learned_lesson = [nil]
-		@learn_lesson = [nil]
-
-		@categories.each do |category|
-			if category.words.empty?
-				@ready << category
-			elsif current_user.lessons.pluck(:category_id).any?(category.id)
-				@learned_lesson << category
-			else
-				@learn_lesson << category
-			end
-		end
-
-		if params[:learned] == 1
-			@learned = 1				
-			@categories = @ready.compact
-			redirect_to categories_path(learned: 1)
-		elsif params[:learned] == 2
-			@learned = 2
-			@categories = @learned_lesson.compact
-			redirect_to categories_path(learned: 2)
-		elsif params[:learned] == 3
-			@learned = 3			
-			@categories = @learn_lesson.compact
-			redirect_to categories_path(learned: 3)
-		end
+		@status = params[:status].try(:to_sym)
+		@learned = params[:learned]
+		@categories = Category.all.paginate(page: params[:page], per_page: 6)
 		@lesson = current_user.lessons
+
+		if @status == :learned
+			@categories = current_user.categories.paginate(page: params[:page], per_page: 6)
+		elsif @status == :unlearned
+			@categories = Category.where.not(id: current_user.categories.ids).paginate(page: params[:page], per_page: 6)
+		elsif @status == :pending
+			@categories = Category.joins("LEFT JOIN words ON categories.id = words.category_id WHERE words.id IS NULL").paginate(page: params[:page], per_page: 6)
+		end
 	end
 
 	private
