@@ -4,6 +4,21 @@
             <h1><strong>Lessons</strong></h1>
 
 			<div class="container mt-3 mb-5">
+				<ul class="nav nav-pills">
+				  <li class="nav-item">
+				  	<%= link_to "All", categories_path, class: "nav-link#{"active"}" %>		
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Learned", categories_path(learned: 1), class: "nav-link#{"active" if @learned == "1" }" %>		
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Not Learned", categories_path(learned: 2), class: "nav-link#{"active" if @learned == "2" }" %>		
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Getting Ready", categories_path(learned: 3),  class: "nav-link#{"active" if @learned == "3" }" %>	
+				  </li>
+				</ul>
+
 				<div class="row">
 				<% if @categories.empty? %>
 				    <div class="alert alert-info ml-4 mt-2">
@@ -43,12 +58,6 @@
 					</div>
 				<% end %>
 				<% end %>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-5 center-block mt-3">
-				<%= will_paginate @categories, renderer: BootstrapPagination::Rails, class: 'pagination-sm' %>
 			</div>
 		</div>
 	</div>
