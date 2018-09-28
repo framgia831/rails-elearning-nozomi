@@ -55,6 +55,11 @@
 			    	</tbody>
 		    	<% end %>
 			</table>
+		<% if @users.empty? %>
+			<div class="alert alert-info">
+				<h1 class="ml-5 mr-5">Relationship doesn't exist yet. </h1>
+			</div>
+		<% end %>
 		</div>
 		</div>
 	</div>
