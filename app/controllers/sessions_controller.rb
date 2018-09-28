@@ -24,7 +24,8 @@ class SessionsController < ApplicationController
 
 	def index
 		@categories = current_user.categories
-		if params[:category].empty?
+		@words = current_user.words
+		if params[:category].nil?
 			@words = current_user.words.paginate(page: params[:page], per_page: 10)
 		else
 			@words = current_user.words.where(category_id: params[:category]).paginate(page: params[:page], per_page: 10)
