@@ -23,7 +23,12 @@ class SessionsController < ApplicationController
 	end
 
 	def index
-		@words = current_user.words.paginate(page: params[:page], per_page: 10)
+		@categories = current_user.categories
+		if params[:category].empty?
+			@words = current_user.words.paginate(page: params[:page], per_page: 10)
+		else
+			@words = current_user.words.where(category_id: params[:category]).paginate(page: params[:page], per_page: 10)
+		end
 	end
 
 	def destroy
