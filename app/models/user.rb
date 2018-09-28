@@ -46,15 +46,6 @@ class User < ApplicationRecord
 	  following.include?(other_user)
 	end
 
-
-	def followers
-		Relationship.where(followed_id: id)
-	end
-
-	def followed
-		Relationship.where(follower_id: id)
-	end
-
 	def relationship(other_user)
 		Relationship.find_by(
 			follower_id: id,

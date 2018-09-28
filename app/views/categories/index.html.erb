@@ -6,7 +6,7 @@
 			<div class="container mt-3 mb-5">
 				<ul class="nav nav-tabs">
 				  <li class="nav-item">
-				  	<%= link_to "All", categories_path, class: "nav-link #{status_active(nil, @status)}" %>		
+				  	<%= link_to "All", categories_path, class: "nav-link #{status_active(nil, @status)} pr-5 pl-5" %>		
 				  </li>
 				  <li class="nav-item">
 				  	<%= link_to "Learned", categories_path(status: :learned), 

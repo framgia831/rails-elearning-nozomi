@@ -26,20 +26,20 @@
 				<% @categories.each do |category| %>
 			    	<tbody>
 			    		<td style="width: 250px;">
-			    			<h3>
+			    			<h2>
 								<%= link_to admin_category_words_path(category_id: category.id)  do%>
 			    				<%= category.title %>
 			    				<% end %>    					
-			    			</h3>
+			    			</h2>
 			    		</td>
 			    		<td style="width: 500px;"><h3><%= category.description %></h3></td>
 						<td style="width: 250px;">
-							<h4 class="block">
-								<%= link_to  new_admin_category_word_path(category_id: category.id)  do%><i class="fa fa-plus-circle"></i>New Word<% end %></h4>
-							<h4>
-								<%= link_to  edit_admin_category_path(category)  do%><i class="fa fa-pencil"></i>Edit Category<% end %></h4>
-							<h4>
-								<%= link_to  admin_category_path(category.id), method: :delete  do%><i class="fa fa-times-circle"></i>Del. Category<% end %></h4>
+							<h3 class="block">
+								<%= link_to  new_admin_category_word_path(category_id: category.id)  do%><i class="fa fa-plus-circle"></i>New Word<% end %></h3>
+							<h3>
+								<%= link_to  edit_admin_category_path(category)  do%><i class="fa fa-pencil"></i>Edit Category<% end %></h3>
+							<h3>
+								<%= link_to  admin_category_path(category.id), method: :delete  do%><i class="fa fa-times-circle"></i>Del. Category<% end %></h3>
 						</td>	
 			    	</tbody>
 			    <% end %>
